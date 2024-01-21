@@ -1,0 +1,178 @@
+@media only screen and (min-width: 360px) and (max-width: 991px) {
+.carousel .list .item .title {
+    font-size: 40px;
+}
+.carousel .list .item .buttons{
+    display: flex;
+    flex-direction: column;
+}
+.wrapper{
+    display: none;
+}
+.featuresSection{
+    height: fit-content;
+    padding: 20px;
+}
+.numbersSection{
+    flex-direction: column;
+}
+.numberDiv{
+    width: 95%;
+    margin: 5px 0;
+}
+footer{
+    flex-direction: column;
+}
+.footerDiv{
+    width: 95%;
+    margin: 5px 0;
+}
+.productsPageTitle{
+    font-size: 35px;
+}
+.underText{
+    text-align: center;
+    width: 90%;
+}
+.categoriesListDiv{
+    flex-wrap: wrap;
+}
+.singleCategories{
+    font-size: 18px;
+    margin-right: 0px;
+    margin: 5px ;
+}
+.productComponentImage{
+    width: 150px;
+    height: 150px;
+}
+.productComponentName{
+    font-size: 15px
+}
+.insideUserProfile{
+    width: 95%;
+}
+.user-menu-bar{
+    width: fit-content;
+    padding: 5px;
+}
+.user-menu-li{
+    font-size: 16px;
+}
+.heroSectionRight{
+    display: none;
+}
+.heroSectionLeft{
+    width: 90%;
+}
+
+.heroBigText {
+    font-size: 40px;
+}
+.heroSmallText{
+    font-size: 17px;
+    margin: 0;
+    margin-bottom: 7px;
+}
+.numbersSection{
+    flex-direction: row;
+    
+}
+.numberInNumberDiv{
+    font-size:30px;
+}
+.textInNumberDiv{
+    font-size: 17px
+}
+.aboutSection{
+    flex-direction: column;
+    padding: 7px;
+    margin-top: 15px;
+}
+.aboutSectionLeft{
+    width: 95%;
+    padding: 20px;
+}
+.aboutSectionTitle{
+    font-size: 39px;
+}
+.aboutSectionRight{
+    display: none;
+}
+.whyUsText{
+    font-size: 38px;
+    text-align: center;
+    padding: 15px;
+}
+.showDiv{
+    display: flex;
+    width: 95%;
+}
+.reasonDiv{
+    width: fit-content;
+}
+.contactGif{
+    width: 90%;
+    height: fit-content;
+}
+.width-plus{
+    width: 380px;
+}
+.signUp-Left{
+    display: none;
+}
+.signUp-Right{
+    width: 90%;
+}
+.inside-signUp-Right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.signUp{
+    align-items: center;
+    justify-content: center;
+}
+.colDisplay{
+    flex-direction: column;
+}
+.userImage{
+    width: 90px;
+    height:90px ;
+}
+
+.userTitle{
+    font-size: 20px;
+}
+.nextToImage{
+    margin-top: 12px;
+}
+.userInfoText{
+    font-size: 18px;
+}
+.user-btn-div{
+    margin: 10px 0;
+    display: flex;
+}
+.deleteText{
+    margin: 10px 0;
+}
+.updateDataBtn {
+    width: fit-content;
+}
+.table-data-title{
+    font-size: 15px
+}
+.user-menu-content{
+    padding: 15px;
+}
+.form-check{
+    margin-bottom: 0px;
+    font-size: 15px;
+}
+.form-check input{
+    margin-right: 6px;
+    margin-top: -18px;
+}
+}

@@ -1,0 +1,38 @@
+.missing{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.insidemissingDivs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+}
+
+.missingBigText{
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #863230;
+}
+.missingSmallText{
+    color: #863230;
+    width: 60%;
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.goHomeBtn{
+    width: 200px;
+    height: 50px;
+    padding: 7px;
+    background-color: #863230;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-bottom: 25px;
+}

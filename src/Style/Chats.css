@@ -1,0 +1,86 @@
+.user-chat-bar{
+    width: 20%;
+    height: 90vh;
+    border-right: 1px solid black;
+}
+
+.chatTitle{
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 2px solid black ;
+    padding: 15px;
+}
+.single-user{
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.656) 
+}
+.userChatImage{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin-right: 10px
+}
+
+.userChatName{
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 16px;
+}
+.latestMessage{
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.657);
+}
+
+.user-chat-content{
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.messageContainer{
+    height: 75vh;
+}
+
+.userChatUserName{
+    display: flex;
+}
+.userChatUserName img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 15px
+}
+.insideChatUserName{
+    font-size: 14px;
+}
+.toSendMessage{
+    display: flex;
+
+}
+.sendAMessage{
+    width:75%;
+    height: 30px;
+    padding: 7px;
+    border: 2px solid #ed5a5a;
+    border-radius: 15px;
+    margin-right: 15px;
+}
+.sendMessageBtn{
+    width: 40px;
+    height: 40px;
+    background-color: #ed5a5a;
+    border-radius: 40%;
+    border: none;
+    cursor: pointer;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.sendMessageBtn img{
+    width: 30px;
+    height: 30px;
+}

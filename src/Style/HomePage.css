@@ -1,0 +1,162 @@
+.heroSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.heroSectionLeft {
+  width: 50%;
+  padding: 15px;
+}
+
+.heroBigText {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-family: Kameron;
+  font-size: 60px;
+}
+
+.homePageImage {
+  width: 600px;
+  height: 85vh;
+}
+.redText {
+  color: #863230;
+}
+
+.heroSmallText {
+  color: #000;
+  font-family: Kameron;
+  font-size: 20px;
+  line-height: normal;
+  margin: 15px 0;
+}
+
+.numbersSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  margin-top: 15px;
+}
+.numberDiv {
+  margin-right: 15px;
+  width: 33.33%;
+}
+
+.numberInNumberDiv {
+  color: #000;
+  font-family: Kameron;
+  font-size: 45px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.textInNumberDiv {
+  color: #000;
+  font-family: Kameron;
+  font-size: 20px;
+}
+.shopNowBtn {
+  width: 150px;
+  height: 40px;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  font-size: 22px;
+  font-weight: bold;
+  background-color: #863230;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.featuresSection {
+  margin: 20px 0;
+  background-color: #863230;
+  width: 100%;
+  height: 300px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+.featureTitle {
+  font-weight: bold;
+  font-size: 25px;
+  margin: 15px 0;
+}
+.featureQuestion {
+  font-family: Kameron;
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.featureSubTitle {
+  color: #000;
+  font-family: Kameron;
+  font-size: 27px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.featureDesc {
+  color: #000;
+  font-family: Kameron;
+  font-size: 17px;
+  width: 80%;
+}
+.categoriePictures {
+  display: flex0;
+}
+
+.latestItems{
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.latestItemRow{
+  width: 95%;
+  display: flex ;
+  justify-content: space-between;
+  padding: 15px;
+}
+.latestItemRow a{
+  margin-top: 7px;
+  font-size: 22px;
+  text-decoration: underline;
+  color: #863230;
+}
+.latestItemRow a:hover{
+  color: #000;
+}
+.latetProductContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center ;
+  flex-wrap: wrap;
+}
+.lastestProductProduct{
+  cursor: pointer;
+  margin: 15px ;
+}
+.latetProductContainer a{
+  text-decoration: none;
+  color: #000;
+}
+.lastestProductImage{
+  width: 250px;
+  height: 250px;
+}
+
+.latestProductName{
+  font-size: 25px;
+  margin: 15px 0;
+
+}
+.latestProductPrice{
+  font-size: 20px;
+  font-weight: bold;
+}

@@ -1,0 +1,124 @@
+.userProfile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.insideUserProfile {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.user-menu-bar {
+  width: 12%;
+  height: 90vh;
+  border-right: 1px solid black;
+  padding: 20px;
+}
+
+.user-menu-ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-menu-li {
+  font-size: 20px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+.user-menu-li:hover {
+  color: #ed5a5a;
+}
+.user-menu-li.active {
+  color: #ed5a5a;
+}
+.user-menu-content {
+  width: 90%;
+  padding: 25px;
+}
+.imageDiv {
+  display: flex;
+  margin-bottom: 15px;
+}
+.userImage {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  border: 5px solid #863230;
+}
+.nextToImage {
+  margin-top: 30px;
+  margin-left: 20px;
+}
+.userTitle {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.user-upload-image {
+  margin-top: 10px;
+}
+.userProfileDetails {
+  display: flex;
+  flex-direction: column;
+}
+.user-btn-div {
+  margin: 20px 0;
+}
+.saveBtns {
+  width: 100px;
+  height: 35px;
+  background-color: #863230;
+  color: white;
+  padding: 7px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+.changePassword {
+  display: flex;
+  flex-direction: column;
+}
+.change-pass-input {
+  width: 430px;
+  border: none;
+  border-bottom: 1px solid #000;
+  font-size: 15px;
+  padding: 10px;
+  margin-right: 10px;
+  margin: 20px 0;
+}
+.updateBtn {
+  width: 200px;
+  margin: 15px 0;
+}
+
+.userProfileInput {
+  display: flex;
+}
+
+.userInfoText {
+  font-size: 20px;
+  margin-top: 15px;
+  margin-right: 10px;
+  color: #863230;
+  font-weight: bold;
+  margin: 7px 0;
+}
+
+.form-check {
+  display: flex;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.form-check input {
+  margin: 0 10px;
+}
+.deleteText{
+  font-size: 20px;
+  margin: 20px;
+}

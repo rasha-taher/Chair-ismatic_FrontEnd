@@ -1,0 +1,40 @@
+footer {
+  background-color: #863230;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footerLogoDiv {
+  display: flex;
+  margin-bottom: 15px;
+}
+.footerDiv {
+  width: 33.33%;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+.footerLogo {
+  margin-top: 15px;
+  margin-left: 5px;
+  font-size: 18px;
+  font-family: "Kalam";
+  font-weight: bold;
+}
+.footerTitle {
+  font-size: 25px;
+  font-family: "Kalam";
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.footer-li {
+  margin-bottom: 15px;
+}
+.footer-li:hover {
+  color: white;
+  cursor: pointer;
+}
+

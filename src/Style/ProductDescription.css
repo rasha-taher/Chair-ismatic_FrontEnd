@@ -1,0 +1,149 @@
+.productDetails {
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.innerProductDetails {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productDetailsIamges {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  margin-right: 20px;
+}
+
+.productDetailsIamgesDiv {
+  display: flex;
+}
+
+.bigImage {
+  height: 500px;
+  width: 500px;
+}
+.smallImages{
+  height: 180px;
+  width: 180px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.smallImage {
+  height: 180px;
+  width: 190px;
+  margin-right: 15px;
+}
+.productDetailsDetail {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.productCategory {
+  border: 2px solid #863230;
+  border-radius: 30px;
+  width: 150px;
+  height: 30px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  font-size: 20px;
+}
+
+.categorytext {
+  font-weight: bold;
+  font-size: 22px;
+}
+.productName {
+  font-size: 35px;
+}
+.productPrice {
+  font-size: 27px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+.flexRow {
+  margin: 10px 0;
+  display: flex;
+  font-size: 22px;
+}
+
+.productsDesc {
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 18px;
+  font-family: Kameron;
+  margin: 10px 0;
+}
+
+.colorDiv {
+  display: flex;
+  margin: 10px 0;
+}
+.color {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.color.selected {
+  border: 3px solid #863230;
+}
+.buttonsDiv {
+  display: flex;
+  margin: 10px 0;
+}
+.numberButton {
+  border: 2px solid #863230;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 22px;
+  margin: 0 15px;
+}
+.numberButton p {
+  cursor: pointer;
+}
+.numberButton p:hover {
+  height: 100%;
+  background-color: #863230;
+}
+
+.addToCartBtn {
+  width: 175px;
+  height: 58px;
+  background-color: #863230;
+  cursor: pointer;
+  font-size: 25px;
+  border: none;
+  border-radius: 10px;
+}
+
+.soldOut {
+  position: absolute;
+  top: 25%;
+  left: 32%;
+  width: 100px;
+  height: 50px;
+  font-size: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 0, 0, 0.7); /* Semi-transparent red background */
+  color: white;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 1; /* Ensure the overlay is above the image */
+}

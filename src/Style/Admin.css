@@ -1,0 +1,238 @@
+.adminLoginContainer {
+  width: 100%;
+  height: 100vh;
+  background-color: #6b2826;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginAdminDiv {
+  background-color: white;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.loginAdminDiv label {
+  font-size: 22px;
+}
+.adminInput {
+  width: 75%;
+  height: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #6b2826;
+  margin: 10px 0;
+}
+
+.adminLoginBtn {
+  width: 150px;
+  height: 35px;
+  background-color: #6b2826;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+.dashboard-container {
+  display: flex;
+}
+
+.side-menu {
+  width: 10%;
+  background-color: #6b2826;
+  color: white;
+  height: 100vh;
+  padding: 15px;
+}
+
+.dash-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.dash-menu-li {
+  font-size: 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  display: flex;
+}
+.dash-menu-li p {
+  padding-top: 12px;
+}
+
+.dash-icons {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  padding-top: 5px;
+}
+.dash-content {
+  width: fit-content;
+  padding: 25px;
+}
+.divTitle {
+  font-size: 35px;
+  color: #6b2826;
+  font-weight: bold;
+}
+
+.usersTable {
+  border: 1px solid #6b2826;
+  margin-top: 20px;
+  overflow: scroll;
+}
+
+.table-data-title {
+  padding: 15px;
+  font-size: 22px;
+  font-weight: bold;
+}
+.updateDataBtn {
+  width: 180px;
+  height: 35px;
+  padding: 7px;
+  background-color: #6b2826;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.deleteBtn {
+  width: fit-content;
+  background-color: #d51811;
+  margin-left: 15px;
+}
+.table-data-row {
+  border-bottom: 1px solid #6b2826;
+}
+.table-data-data {
+  padding: 15px;
+}
+.updateModalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.updateModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  border: 2px solid #6b2826;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: rgb(241, 232, 232);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.updateText {
+  font-size: 20px;
+  margin: 10px 0;
+}
+.userUpdateInput {
+  width: 200px;
+  height: 25px;
+  padding: 7px;
+  border-radius: 10px;
+  border: 2px solid #6b2826;
+}
+
+.updateModal .updateDataBtn {
+  font-size: 20px;
+  height: 40px;
+  margin: 10px 0;
+}
+.updateDataBtn:hover {
+  background-color: #792a27;
+}
+.adminAddUser {
+  display: flex;
+  flex-direction: column;
+}
+
+.addUserInput {
+  width: 400px;
+  height: 25px;
+  padding: 10px;
+  border: 2px solid #6b2826;
+  border-radius: 10px;
+}
+
+.groupInColumn {
+  display: flex;
+}
+.groupInColumn div {
+  margin-right: 15px;
+}
+
+.userTypSelect {
+  width: 425px;
+  height: 55px;
+  margin-top: 40px;
+}
+.editOrderDetail {
+  display: flex;
+  flex-direction: row;
+}
+.editOrderDetailDiv{
+    padding: 30px;
+}
+.editOrderDetailDiv div{
+    margin-right: 50px;
+}
+
+.editTitle{
+    font-size: 35px;
+    color: #6b2826;
+    font-weight: bold;
+}
+.orderDetailRow p{
+    font-size: 20px;
+}
+.orderDetailRow input{
+    width: 300px;
+    height: 30px;
+    padding: 5px;
+    border: 2px solid #6b2826;
+    border-radius: 10px;
+    margin: 10px;
+}
+.editOrderDetail{
+    display: flex;
+    
+}
+.biggerText{
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+.orderDetailRow select{
+  width: 320px;
+  height: 35px;
+  padding: 5px;
+  border: 2px solid #6b2826;
+  border-radius: 10px;
+  margin: 10px;
+  font-size: 15px;
+}

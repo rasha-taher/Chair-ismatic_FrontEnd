@@ -1,0 +1,71 @@
+.sellItemContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.insideSellItemContainer{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.sellItemTitle{
+font-size: 25px;
+font-weight: bold;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.productCategoryToSell{
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.descText {
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+.selectCategory{
+    width: 92%;
+    height: 50px;
+    padding: 10px;
+    border: 2px solid #6B2826;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.productInputsToSell{
+    width: 90%;
+    height: 25px;
+    padding: 10px;
+    border: 2px solid #6B2826;
+    border-radius: 10px;
+}
+.textArea{
+    height: 200px;
+    resize: none;
+}
+.colorPicker{
+    width: 75%;
+    height: 30px;
+}
+
+.imagePreview{
+    width: 200px;
+    height: 200px
+}
+
+.plusButton{
+    width: fit-content;
+    height: fit-content;
+    background-color: #863230;
+    color: white;
+    padding: 4px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
