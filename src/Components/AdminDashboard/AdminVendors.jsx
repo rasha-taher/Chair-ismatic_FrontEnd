@@ -40,19 +40,13 @@ const AdminVendors = () => {
       );
 
       if (response.data.success) {
-        // Update the user in the state
         setCustomers((prevCustomers) =>
           prevCustomers.map((customer) =>
             customer._id === selectedUser._id ? response.data.user : customer
           )
         );
-
-        // Highlight the updated row for 5 seconds
-        // You may need to implement this using additional state or CSS classes
-        // Example: setUpdatedRowId(selectedUser._id);
-
         console.log("User updated successfully");
-        handleCloseModal(); // Close the modal after updating
+        handleCloseModal(); 
       } else {
         console.error("Error updating user:", response.data.message);
       }

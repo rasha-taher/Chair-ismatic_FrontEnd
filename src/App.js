@@ -79,7 +79,7 @@ function App() {
           <Route path="/editOrderDetail/:id" element={<EditOrderDetail />} />
           <Route path="/missing" element={<Missing />} />
           <Route path="/profile" element={<UserProfileSetting />} />
-          <Route path="/chats/:vendorEmail" element={<Chats />} />
+          <Route path="/chats" element={<Chats />} />
           <Route path="/*" element={<Missing />} />
         </Routes>
       </Router>

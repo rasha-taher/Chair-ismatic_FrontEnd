@@ -1,104 +1,152 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import MenuBar from "./MenuBar";
 import Footer from "./Footer";
-import user from '../Images/nonprof.png'
-import '../Style/Chats.css'
-import send from '../Images/send.svg'
-import io from 'socket.io-client';
-import { useParams } from 'react-router-dom'; 
-
-const socket = io(); // Connect to the Socket.IO server
+import "../Style/Chats.css";
+import axios from "axios";
+import send from "../Images/send.svg";
+import userNotFound from "../Images/nonprof.png";
+import { io } from "socket.io-client";
+import Conversations from "./Conversations";
+import Message from "./MessageDiv";
 
 const Chats = () => {
-    const { vendorEmail } = useParams(); 
-    const [messages, setMessages] = useState([]);
-    const [newMessage, setNewMessage] = useState('');
-    const wurl = "http://localhost:8080";
-    useEffect(() => {
-      
-        socket.emit('join_room', vendorEmail);
-        fetchMessages(vendorEmail);
-    
-        // Listen for incoming messages
-        socket.on('receive_message', (data) => {
-          // Update messages by appending the new message
-          setMessages(prevMessages => [...prevMessages, data]);
-        });
-    
-        return () => {
-          // Clean up event listeners when the component unmounts
-          socket.off('receive_message');
-        };
-    }, [vendorEmail]);
+  const user = localStorage.getItem("loggedInUserEmail");
 
+  const [conversations, setConversations] = useState([]);
+  const [currentChat, setCurrentChat] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
+  const [arrivalMessage, setArrivalMessage] = useState(null);
+  const [onlineUsers, setOnlineUsers] = useState([]);
+  const socket = useRef();
+  const [selectedUser, setSelectedUser] = useState(null);
+  const wurl = "http://localhost:8080";
+  const scrollRef = useRef();
+
+  useEffect(() => {
+    socket.current = io("ws://localhost:8000");
+    socket.current.on("getMessage", (data) => {
+      setArrivalMessage({
+        sender: data.senderEmail,
+        text: data.text,
+        createdAt: Date.now(),
+      });
+    });
+  }, []);
+
+
+  useEffect(() => {
+    arrivalMessage &&
+      currentChat?.members.includes(arrivalMessage.sender) &&
+      setMessages((prev) => [...prev, arrivalMessage]);
+  }, [arrivalMessage, currentChat]);
+
+  useEffect(() => {
+    if (user && user.followings) {  // Check if user and user.followings are defined
+      socket.current.emit("addUser", user._id);
+      socket.current.on("getUsers", (users) => {
+        setOnlineUsers(
+          user.followings.filter((f) => users.some((u) => u.userEmail === f))
+        );
+      });
+    }
+  }, [user]);
   
-    const fetchMessages = (vendorEmail) => {
-      // Fetch messages from the server based on the vendor's email
-      // You need to implement this endpoint on your server
-      // Example: /api/messages/:vendorEmail
-      fetch(wurl+`/api/messages/${vendorEmail}`)
-        .then(response => response.json())
-        .then(data => setMessages(data))
-        .catch(error => console.error('Error fetching messages:', error));
+  useEffect(() => {
+    const getConversations = async () => {
+      try {
+        const res = await axios.get(
+          wurl + "/conversation/getConversationOfUser/" + user
+        );
+        setConversations(res.data);
+        console.log("The conversation:", res.data);
+      } catch (err) {
+        console.log(err);
+      }
     };
-  
-    const handleSendMessage = () => {
-      // Send a new message to the server
-      socket.emit('send_message', { room: vendorEmail, message: newMessage });
-      setNewMessage(newMessage);
+    getConversations();
+  }, [user]);
+
+  useEffect(() => {
+    const getMessages = async () => {
+      try {
+        const res = await axios.get(
+          wurl + "/message/getMessages/" + currentChat._id
+        );
+        setMessages(res.data);
+      } catch (err) {
+        console.log(err);
+      }
     };
+    getMessages();
+  }, [currentChat]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const message = {
+      sender: user,
+      text: newMessage,
+      conversationId: currentChat._id,
+    };
+
+    const receiverId = currentChat.members.find(
+      (member) => member !== user.email
+    );
+
+    socket.current.emit("sendMessage", {
+      senderId: user,
+      receiverId,
+      text: newMessage,
+    });
+
+    try {
+      const res = await axios.post(wurl + "/message/addMessage/", message);
+      setMessages([...messages, res.data]);
+      setNewMessage("");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
     <div>
       <MenuBar />
       <div className="userProfile">
-        <div className="insideUserProfile">
+        <div key={user} className="insideUserProfile">
           <div className="user-chat-bar">
-            <div className="chatTitle">
-             Recent Chats
-            </div>
-            <div className="single-user">
-            <img src={user} className="userChatImage"/>
-            <div>
-            <p className="userChatName">
-            {vendorEmail}
-                </p>
-                <p className="latestMessage">
-                  {messages.length > 0 && messages[messages.length - 1].text}
-                </p>
-            </div>
-            </div>
+            <div className="chatTitle">Recent Chats</div>
+            {conversations.map((c) => (
+              <div onClick={() => setCurrentChat(c)}>
+                <Conversations conversation={c} currentUser={user} />
+              </div>
+            ))}
           </div>
 
           <div className="user-chat-content">
-           <div className="chats">
-            <div className="userChatUserName">
-            <img src={user}/>
-            <p className="insideChatUserName">
-            {vendorEmail}
-                 </p>
-            </div>
-            <div className="messageContainer">
-                {messages.map((message, index) => (
-                  <div key={index} className="singleMessage">
-                    <p className="messageText">
-                      {message.sender}: {message.text}
-                    </p>
-                  </div>
+            {currentChat ? (
+              <div ref={scrollRef}>
+                {messages.map((m) => (
+                  <Message message={m} own={m.sender === user} />
                 ))}
               </div>
-           </div>
-           <div className="toSendMessage">
+            ) : (
+              <span> Open a Conversation To Start A Chat</span>
+            )}
+
+            <div className="toSendMessage">
               <input
                 className="sendAMessage"
                 placeholder="Enter Message"
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
               />
-              <button className="sendMessageBtn" onClick={handleSendMessage}>
-                <img src={send} alt="Send"/>
+              <button className="sendMessageBtn" onClick={handleSubmit}>
+                <img src={send} alt="Send" />
               </button>
             </div>
-           
           </div>
         </div>
       </div>
