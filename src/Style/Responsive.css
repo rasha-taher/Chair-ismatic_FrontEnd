@@ -266,5 +266,54 @@
   font-size: 20px;
   margin: 10px 0;
 }
+.bigImage {
+  height: 150px;
+  width: 150px;
+}
+.smallImages {
+  height: 80px;
+  width: 80px;
+}
+.productCategory {
+  width: 150px;
+  height: 30px;
+  padding: 5px;
+  margin: 10px 0;
+  font-size: 18px;
+}
 
+.productName {
+  font-size: 21px;
+}
+.productPrice {
+  font-size: 20px;
+}
+.flexRow p {
+  font-size: 15px;
+}
+.categorytext{
+  font-size: 15px;
+}
+.productsDesc{
+  font-size: 13px;
+}
+.color {
+  width: 30px;
+  height: 30px
+}
+.buttonsDiv{
+  flex-direction: column;
+}
+
+.numberButton {
+  width: 86px;
+  padding: 10px;
+  font-size:18px;
+  margin: 5px 0px;
+}
+.addToCartBtn {
+  width: 110px;
+  height: 40px;
+  font-size:18px;
+}
 }

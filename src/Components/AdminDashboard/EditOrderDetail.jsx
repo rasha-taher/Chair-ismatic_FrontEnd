@@ -13,7 +13,7 @@ const EditOrderDetail = () => {
     "Canceled",
   ]);
 
-  const wurl = "http://localhost:8080";
+  const wurl = "https://chair-ismatic-backend.onrender.com";
 
   useEffect(() => {
     const fetchOrderById = async () => {
@@ -165,13 +165,16 @@ const EditOrderDetail = () => {
           <div className="orderDetailRow">
             {" "}
             <p>Status:</p>{" "}
-            <select value={status} onChange={(e) => handleInputChange('status', e.target.value)}>
-  {statusOptions.map((option) => (
-    <option key={option} value={option}>
-      {option}
-    </option>
-  ))}
-</select>
+            <select
+              value={status}
+              onChange={(e) => handleInputChange("status", e.target.value)}
+            >
+              {statusOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="orderDetailRow">
             {" "}

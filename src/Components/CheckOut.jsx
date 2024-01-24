@@ -7,7 +7,7 @@ import axios from "axios";
 import Modal from "./Modal";
 
 const CheckOut = () => {
-  const wurl = "http://localhost:8080";
+  const wurl = "https://chair-ismatic-backend.onrender.com";
 
   const { cart } = useCart();
 
@@ -34,7 +34,7 @@ const CheckOut = () => {
   const closeModal = () => {
     setSuccessModal(false);
     setErrorModal(false);
-    setAskForLoginModal(false)
+    setAskForLoginModal(false);
   };
 
   const calculateSubtotal = () => {
@@ -48,15 +48,15 @@ const CheckOut = () => {
     try {
       // Validate input fields
       if (!email || !mobileNumber || !address) {
-        setErrorText("Please fill in all the required fields.")
+        setErrorText("Please fill in all the required fields.");
         setErrorModal(true);
         return;
       }
 
       // Check if the user is logged in
-      if (!localStorage.getItem('loggedInUserEmail')) {
+      if (!localStorage.getItem("loggedInUserEmail")) {
         setErrorText("Please Login Before Placing An Order!");
-      setAskForLoginModal(true);
+        setAskForLoginModal(true);
         return;
       }
 
@@ -85,7 +85,7 @@ const CheckOut = () => {
         setSuccessModal(true);
         setSuccesText(`Order Placed Successfully!`);
       } else {
-        setErrorText("Please fill in all the required fields.")
+        setErrorText("Please fill in all the required fields.");
         setErrorModal(true);
       }
     } catch (error) {
@@ -490,11 +490,7 @@ const CheckOut = () => {
       </div>
       {/* Success Modal */}
       {successModal && (
-        <Modal
-          modalText={succesText}
-          buttonText="Ok"
-          closeModal={closeModal}
-        />
+        <Modal modalText={succesText} buttonText="Ok" closeModal={closeModal} />
       )}
       {errorModal && (
         <Modal
@@ -503,7 +499,7 @@ const CheckOut = () => {
           closeModal={closeModal}
         />
       )}
-       {askForLoginModal && (
+      {askForLoginModal && (
         <Modal
           modalText={errorText}
           buttonText="Login"

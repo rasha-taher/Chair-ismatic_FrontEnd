@@ -69,7 +69,10 @@ const ProductDescription = () => {
     const itemToAdd = {
       id: product && product.id,
       name: product && product.name,
-      price: product && product.discountPrice ? product.discountPrice : product.price,
+      price:
+        product && product.discountPrice
+          ? product.discountPrice
+          : product.price,
       quantity,
       image: product && product.image[chosenColorIndex],
       color: product && product.colors[chosenColorIndex],
@@ -128,21 +131,18 @@ const ProductDescription = () => {
               <p className="categorytext">{product.category}</p>
             </div>
             <p className="productName">{product.name}</p>
-           
-              {product.discountPrice && product.discountPrice !== "" ? (
-                <div className="productDetailsIamgesDiv" >
-          
-                    <span className="productComponentDiscount">
-                      {product.price}$
-                    </span>{" "}
-                    <p className="productPrice">
-                    {product.discountPrice}$
-                  </p>
+
+            {product.discountPrice && product.discountPrice !== "" ? (
+              <div className="productDetailsIamgesDiv">
+                <span className="productComponentDiscount">
+                  {product.price}$
+                </span>{" "}
+                <p className="productPrice">{product.discountPrice}$</p>
               </div>
-              ) : (
-                <p className="productPrice">{product.price}$</p>
-              )}
-          
+            ) : (
+              <p className="productPrice">{product.price}$</p>
+            )}
+
             <div className="flexRow">
               <p className="categorytext">By: &nbsp;</p>{" "}
               <p>{product.user_email}</p>

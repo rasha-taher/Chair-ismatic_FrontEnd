@@ -7,7 +7,7 @@ const AdminVendors = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
 
-  const wurl = "http://localhost:8080";
+  const wurl = "https://chair-ismatic-backend.onrender.com";
 
   useEffect(() => {
     axios
@@ -46,7 +46,7 @@ const AdminVendors = () => {
           )
         );
         console.log("User updated successfully");
-        handleCloseModal(); 
+        handleCloseModal();
       } else {
         console.error("Error updating user:", response.data.message);
       }

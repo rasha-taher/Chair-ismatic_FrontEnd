@@ -7,7 +7,7 @@ const AdminCustomers = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
 
-  const wurl = "http://localhost:8080";
+  const wurl = "https://chair-ismatic-backend.onrender.com";
 
   useEffect(() => {
     axios

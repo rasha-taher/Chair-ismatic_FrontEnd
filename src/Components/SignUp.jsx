@@ -24,7 +24,7 @@ const SignUp = () => {
   const [errorText, setErrorText] = useState("");
   const [succesText, setSuccesText] = useState("");
 
-  const wurl = "http://localhost:8080";
+  const wurl = "https://chair-ismatic-backend.onrender.com";
   useEffect(() => {
     const result = PWD_REGEX.test(password);
     setValidPwd(result);

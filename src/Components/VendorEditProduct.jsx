@@ -23,7 +23,7 @@ const VendorEditProduct = () => {
   const [errorModal, setErrorModal] = useState(false);
   const [errorText, setErrorText] = useState("");
   const [successText, setSuccessText] = useState("");
-  const wurl = "http://localhost:8080";
+  const wurl = "https://chair-ismatic-backend.onrender.com";
 
   const handleProceed = () => {
     window.location.href = `/productDetails/${id}`;
@@ -110,8 +110,8 @@ const VendorEditProduct = () => {
   const handleColorChange = (index, newColor) => {
     const updatedColors = [...colors];
     updatedColors[index] = newColor;
-    setColors(updatedColors); 
-  }
+    setColors(updatedColors);
+  };
   return (
     <div>
       <MenuBar />
@@ -160,9 +160,11 @@ const VendorEditProduct = () => {
                       chosenColorIndex === index ? "selected" : ""
                     }`}
                     value={c}
-                    onChange={(e) =>{ handleColorChange(index, e.target.value)
-                    
-                      setChosenColorIndex(index);}}
+                    onChange={(e) => {
+                      handleColorChange(index, e.target.value);
+
+                      setChosenColorIndex(index);
+                    }}
                   />
                 ))}
               </div>

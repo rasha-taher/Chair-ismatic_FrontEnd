@@ -20,7 +20,7 @@ const SellItems = () => {
   const [errorModal, setErrorModal] = useState(false);
   const [errorText, setErrorText] = useState("");
   const [succesText, setSuccesText] = useState("");
-  const wurl = "http://localhost:8080";
+  const wurl = "https://chair-ismatic-backend.onrender.com";
   const email = localStorage.getItem("loggedInUserEmail");
 
   const handleProceed = () => {
@@ -30,17 +30,17 @@ const SellItems = () => {
   const handleImageUpload = (event) => {
     const files = event.target.files;
     const newImages = [...images];
-  
+
     for (let i = 0; i < Math.min(files.length, 3 - images.length); i++) {
       const file = files[i];
       const reader = new FileReader();
-  
+
       reader.onloadend = () => {
         const base64String = reader.result;
         newImages.push(base64String);
         if (i === Math.min(files.length, 3 - images.length) - 1) {
           setImages(newImages);
-          setImagePreview(newImages[0]); 
+          setImagePreview(newImages[0]);
         }
       };
       if (file) {
@@ -48,13 +48,13 @@ const SellItems = () => {
       }
     }
   };
-  
+
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
   const handleFormSubmit = async () => {
-      const imageBase64Array = images.map((image) => image.split(",")[1]);
-      console.log('Image Base64 Array:', imageBase64Array);
+    const imageBase64Array = images.map((image) => image.split(",")[1]);
+    console.log("Image Base64 Array:", imageBase64Array);
     try {
       const response = await axios.post(`${wurl}/product/addProduct`, {
         name: productName,
@@ -161,32 +161,36 @@ const SellItems = () => {
                 className="productInputsToSell textArea"
               />
 
-              <p className="descText addrow"> Choose Colors: 
+              <p className="descText addrow">
+                {" "}
+                Choose Colors:
                 {colors.length < 3 && (
-                <button className="plusButton" onClick={handleAddColor}>
-                  +
-                </button>
-                
-              )}</p>
+                  <button className="plusButton" onClick={handleAddColor}>
+                    +
+                  </button>
+                )}
+              </p>
               {colors.map((color, index) => (
                 <>
-                <input
-                  key={index}
-                  type="color"
-                  className="colorPicker "
-                  value={color}
-                  onChange={(e) => {
-                    const newColors = [...colors];
-                    newColors[index] = e.target.value;
-                    setColors(newColors);
-                  }}
-                />
-                <button className="plusButton" onClick={() => handleRemoveColor(index)}>
-                Remove
-              </button>
-              </>
+                  <input
+                    key={index}
+                    type="color"
+                    className="colorPicker "
+                    value={color}
+                    onChange={(e) => {
+                      const newColors = [...colors];
+                      newColors[index] = e.target.value;
+                      setColors(newColors);
+                    }}
+                  />
+                  <button
+                    className="plusButton"
+                    onClick={() => handleRemoveColor(index)}
+                  >
+                    Remove
+                  </button>
+                </>
               ))}
-            
 
               <p className="descText"> Quantity Available: </p>
               <input
@@ -215,11 +219,15 @@ const SellItems = () => {
               />
             </div>
             <div className="productCategoryToSell">
-              <p className="descText addrow"> Upload Images: {images.length < 3 && (
+              <p className="descText addrow">
+                {" "}
+                Upload Images:{" "}
+                {images.length < 3 && (
                   <button className="plusButton" onClick={handleAddImage}>
                     +
                   </button>
-                )}</p>
+                )}
+              </p>
               <input
                 id="fileInput"
                 type="file"
@@ -232,19 +240,19 @@ const SellItems = () => {
               <div className="sellItemImage">
                 {images.map((image, index) => (
                   <>
-                  <img
-                    key={index}
-                    src={image}
-                    className="imagePreview"
-                    alt={`Preview ${index}`}
-                  />
-                  <button
-               className="plusButton"
-                onClick={() => handleRemoveImage(index)}
-              >
-                Remove
-              </button>
-              </>
+                    <img
+                      key={index}
+                      src={image}
+                      className="imagePreview"
+                      alt={`Preview ${index}`}
+                    />
+                    <button
+                      className="plusButton"
+                      onClick={() => handleRemoveImage(index)}
+                    >
+                      Remove
+                    </button>
+                  </>
                 ))}
               </div>
             </div>

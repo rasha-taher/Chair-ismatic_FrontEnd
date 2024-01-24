@@ -89,7 +89,7 @@ const ViewCart = () => {
               )}
             </div>
             <div className="viewCart">
-              <div className="cartProduct fullPrice">Estimated Quantity</div>
+              <div className="cartProduct fullPrice">Estimated Price</div>
               <div className="cartProductForBill">{calculateTotalQuantity()}</div>
               <div className="cartProductForBill">{calculateCartTotal()}$</div>
               <div className="cartProductBin"></div>

@@ -9,7 +9,7 @@ const AdminCategories = () => {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/category/getAllCategories"
+        "https://chair-ismatic-backend.onrender.com/category/getAllCategories"
       );
       setCategories(response.data);
     } catch (error) {
@@ -20,7 +20,7 @@ const AdminCategories = () => {
   const addCategory = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/category/addCategory",
+        "https://chair-ismatic-backend.onrender.com/category/addCategory",
         { category: newCategory }
       );
       console.log("Category added:", response.data);
@@ -34,7 +34,7 @@ const AdminCategories = () => {
   const deleteCategory = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:8080/category/deleteCategoriesById/${id}`
+        `https://chair-ismatic-backend.onrender.com/category/deleteCategoriesById/${id}`
       );
       console.log("Category deleted");
       fetchCategories();

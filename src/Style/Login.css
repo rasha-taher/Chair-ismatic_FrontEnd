@@ -2,15 +2,21 @@
   display: flex;
 }
 
-.login-Right {
+.login-page-Right {
   background-image: url("../Images/tmp_89f74208-75a2-4c86-9724-aa01cdd4d519.jpeg");
-  width: 40%;
+  width: 50%;
   height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-
+.login-page-Left{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
 .login-Left {
   width: 40%;
   display: flex;

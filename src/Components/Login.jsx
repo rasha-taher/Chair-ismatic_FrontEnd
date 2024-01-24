@@ -4,7 +4,7 @@ import "../Style/Login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const wurl = "http://localhost:8080";
+  const wurl = "https://chair-ismatic-backend.onrender.com";
   const handleLogin = async () => {
     try {
       const response = await fetch(wurl + "/user/login", {
@@ -33,7 +33,7 @@ const Login = () => {
 
   return (
     <div className="login">
-      <div className="login-Left">
+      <div className="login-page-Left">
         <div className="inside-login-Left">
           <p className="loginTitle">Log In</p>
           <p className="undertext">Enter Your Personal Information</p>
@@ -61,7 +61,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <div className="login-Right"></div>
+      <div className="login-page-Right"></div>
     </div>
   );
 };

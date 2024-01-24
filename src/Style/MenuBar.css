@@ -157,6 +157,7 @@
     box-shadow: 0 0 8px #6b2826
   }
   .menuimg {
+    display: block;
     height: 25px;
     width: 25px;
     margin-top: 10px;

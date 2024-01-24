@@ -11,10 +11,10 @@ const ChangePassword = () => {
   const [successModal, setSuccessModal] = useState(false);
   const [successText, setSuccessText] = useState("");
 
-  const apiUrl = "http://localhost:8080";
+  const apiUrl = "https://chair-ismatic-backend.onrender.com";
 
   const handleProceed = () => {
-    localStorage.clear()
+    localStorage.clear();
     window.location.href = "/";
   };
 
@@ -23,8 +23,9 @@ const ChangePassword = () => {
       // Check if new password matches the regex pattern
       const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
       if (!passwordRegex.test(newPassword)) {
-        setErrorMessage("Password must be at least 8 characters and contain at least one letter and one number");
-       
+        setErrorMessage(
+          "Password must be at least 8 characters and contain at least one letter and one number"
+        );
       }
 
       const userEmail = localStorage.getItem("loggedInUserEmail");
@@ -41,7 +42,9 @@ const ChangePassword = () => {
         setSuccessText("Password updated successfully!");
         setSuccessModal(true);
       } else {
-        setErrorMessage("Failed to update password. Please check your old password and try again.");
+        setErrorMessage(
+          "Failed to update password. Please check your old password and try again."
+        );
       }
     } catch (error) {
       console.error("Error updating password:", error.message);
@@ -83,7 +86,11 @@ const ChangePassword = () => {
       </button>
       {/* Success Modal */}
       {successModal && (
-        <Modal modalText={successText} buttonText="Login" closeModal={handleProceed} />
+        <Modal
+          modalText={successText}
+          buttonText="Login"
+          closeModal={handleProceed}
+        />
       )}
     </div>
   );

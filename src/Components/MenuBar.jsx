@@ -21,7 +21,7 @@ const MenuBar = () => {
   const handleMenu = () => {
     setMenu(!showMenu);
   };
-  const wurl = "http://localhost:8080";
+  const wurl = "https://chair-ismatic-backend.onrender.com";
   const toggleLogin = () => {
     setLoginVisible(!loginVisible);
   };
@@ -99,7 +99,7 @@ const MenuBar = () => {
           <p className="logoText"> Chair-ismatic</p>
         </div>
       </Link>
-     <div className="menuPages nomres">
+      <div className="menuPages nomres">
         <ul className="menu-ul">
           <Link to="/">
             {" "}
@@ -144,61 +144,66 @@ const MenuBar = () => {
         </ul>
       </div>
       <div className="menuIcons">
-      <div className="menuimg" onClick={handleMenu}>
-        <img src={burgerMenu} alt="logo" className="logoImage" />
-      </div>
-      {showMenu && (
-        <div className="menuPages insideResp" >
-          <ul className="menu-ul">
-            <Link to="/">
-              {" "}
-              <li className="menu-li">Home</li>{" "}
-            </Link>
-            {role !== "vendor" && (
-              <Link to="/products">
-                {" "}
-                <li className="menu-li">Products</li>{" "}
-              </Link>
-            )}
-            <Link to="/about">
-              {" "}
-              <li className="menu-li">About</li>{" "}
-            </Link>
-
-            {role && role !== "customer" && (
-              <Link to="/yourproduct">
-                {" "}
-                <li className="menu-li">Your Products</li>{" "}
-              </Link>
-            )}
-
-            {role && role !== "customer" && (
-              <Link to="/sellItems">
-                {" "}
-                <li className="menu-li">Sell Items</li>{" "}
-              </Link>
-            )}
-            {role && (
-              <Link to="/profile">
-                {" "}
-                <li className="menu-li">Your Profile</li>{" "}
-              </Link>
-            )}
-            {role && (
-              <Link to="/chats">
-                {" "}
-                <li className="menu-li">Your Chats</li>{" "}
-              </Link>
-            )}
-          </ul>
+        <div className="menuimg" onClick={handleMenu}>
+          <img src={burgerMenu} alt="logo" className="logoImage" />
         </div>
-      )}
-      <div>
-        <img src={user} alt="user" className="menuIcon" onClick={toggleLogin} />
+        {showMenu && (
+          <div className="menuPages insideResp">
+            <ul className="menu-ul">
+              <Link to="/">
+                {" "}
+                <li className="menu-li">Home</li>{" "}
+              </Link>
+              {role !== "vendor" && (
+                <Link to="/products">
+                  {" "}
+                  <li className="menu-li">Products</li>{" "}
+                </Link>
+              )}
+              <Link to="/about">
+                {" "}
+                <li className="menu-li">About</li>{" "}
+              </Link>
 
-        <Link to="/cart">
-          <img src={cart} alt="cart" className="menuIcon" />
-        </Link>
+              {role && role !== "customer" && (
+                <Link to="/yourproduct">
+                  {" "}
+                  <li className="menu-li">Your Products</li>{" "}
+                </Link>
+              )}
+
+              {role && role !== "customer" && (
+                <Link to="/sellItems">
+                  {" "}
+                  <li className="menu-li">Sell Items</li>{" "}
+                </Link>
+              )}
+              {role && (
+                <Link to="/profile">
+                  {" "}
+                  <li className="menu-li">Your Profile</li>{" "}
+                </Link>
+              )}
+              {role && (
+                <Link to="/chats">
+                  {" "}
+                  <li className="menu-li">Your Chats</li>{" "}
+                </Link>
+              )}
+            </ul>
+          </div>
+        )}
+        <div>
+          <img
+            src={user}
+            alt="user"
+            className="menuIcon"
+            onClick={toggleLogin}
+          />
+
+          <Link to="/cart">
+            <img src={cart} alt="cart" className="menuIcon" />
+          </Link>
         </div>
       </div>
       {loginVisible && (

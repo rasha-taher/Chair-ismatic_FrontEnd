@@ -11,7 +11,7 @@ import Message from "./MessageDiv";
 
 const Chats = () => {
   const user = localStorage.getItem("loggedInUserEmail");
-  const userRole = localStorage.getItem("role"); 
+  const userRole = localStorage.getItem("role");
 
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
@@ -21,18 +21,17 @@ const Chats = () => {
   const [vendors, setVendors] = useState([]);
   const [clickedUser, setClickedUser] = useState(null);
   const socket = useRef();
-  const wurl = "http://localhost:8080";
+  const wurl = "https://chair-ismatic-backend.onrender.com";
   const scrollRef = useRef();
   const handleConversationClick = (user) => {
     setClickedUser(user);
   };
 
-  
   useEffect(() => {
     axios
-    .get(wurl + "/user/vendors")
-    .then((response) => setVendors(response.data))
-    .catch((error) => console.error("Error fetching customer data:", error));
+      .get(wurl + "/user/vendors")
+      .then((response) => setVendors(response.data))
+      .catch((error) => console.error("Error fetching customer data:", error));
   }, []);
 
   useEffect(() => {
@@ -46,14 +45,12 @@ const Chats = () => {
       });
     });
   }, []);
-  
 
   useEffect(() => {
     arrivalMessage &&
       currentChat?.members.includes(arrivalMessage.sender) &&
       setMessages((prev) => [...prev, arrivalMessage]);
   }, [arrivalMessage, currentChat]);
-  
 
   useEffect(() => {
     const getConversations = async () => {
@@ -92,7 +89,7 @@ const Chats = () => {
             wurl +
               `/conversation/getConversationOfTwoUser/${user}/${clickedUser.email}`
           );
-  
+
           if (res.data) {
             setCurrentChat(res.data);
           } else {
@@ -109,13 +106,13 @@ const Chats = () => {
         console.log(err);
       }
     };
-  
+
     getOrCreateConversation();
   }, [user, clickedUser]);
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       if (!currentChat || !currentChat.members) {
         // If no currentChat, create a new conversation
@@ -123,32 +120,32 @@ const Chats = () => {
           senderEmail: user,
           receiverEmail: clickedUser.email,
         };
-  
+
         const newConversationRes = await axios.post(
           wurl + "/conversation/newConversation",
           newConversationData
         );
-  
+
         const newConversation = newConversationRes.data;
         setCurrentChat(newConversation);
       }
-  
+
       const message = {
         sender: user,
         text: newMessage,
         conversationId: currentChat._id,
       };
-  
+
       const receiverId = currentChat.members.find(
         (member) => member !== user.email
       );
-  
+
       socket.current.emit("sendMessage", {
         senderId: user,
         receiverId,
         text: newMessage,
       });
-  
+
       const res = await axios.post(wurl + "/message/addMessage/", message);
       setMessages([...messages, res.data]);
       setNewMessage("");
@@ -166,8 +163,11 @@ const Chats = () => {
             <div className="chatTitle">Recent Chats</div>
             {vendors.map((c) => (
               <div key={c.email} onClick={() => setCurrentChat(c)}>
-                <Conversations currentUser={c}    onClick={handleConversationClick}
-                 isClicked={clickedUser === c}/>
+                <Conversations
+                  currentUser={c}
+                  onClick={handleConversationClick}
+                  isClicked={clickedUser === c}
+                />
               </div>
             ))}
           </div>

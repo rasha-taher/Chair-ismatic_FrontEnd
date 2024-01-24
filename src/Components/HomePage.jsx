@@ -8,7 +8,7 @@ import React, { useState, useEffect } from "react";
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [startIndex, setStartIndex] = useState(0);
-  const wurl = "http://localhost:8080";
+  const wurl = "https://chair-ismatic-backend.onrender.com";
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -66,17 +66,15 @@ const HomePage = () => {
       </div>
       <div className="latestItems">
         <div className="latestItemRow">
-        <p className="featureQuestion">Our Latest Products </p>
-        <Link to="/products">
-              See More 
-            </Link>
-            </div>
+          <p className="featureQuestion">Our Latest Products </p>
+          <Link to="/products">See More</Link>
+        </div>
         <div className="latetProductContainer">
           {products.slice(startIndex, startIndex + 5).map((product) => (
             <Link to={`/productDetails/${product._id}`}>
               <div className="lastestProductProduct">
                 <img
-                    src={getImageSrc(product.image[0])}
+                  src={getImageSrc(product.image[0])}
                   className="lastestProductImage"
                 />
                 <p className="latestProductName"> {product.name}</p>
@@ -84,9 +82,7 @@ const HomePage = () => {
               </div>
             </Link>
           ))}
-          <div className="btn-div">
-           
-          </div>
+          <div className="btn-div"></div>
         </div>
       </div>
       <Footer />

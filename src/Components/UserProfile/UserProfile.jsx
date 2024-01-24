@@ -17,8 +17,7 @@ const UserProfile = () => {
   const [errorText, setErrorText] = useState("");
   const [succesText, setSuccesText] = useState("");
 
-  
-  const wurl = "http://localhost:8080";
+  const wurl = "https://chair-ismatic-backend.onrender.com";
   useEffect(() => {
     // Fetch user data from backend when the component mounts
     const fetchData = async () => {
@@ -33,12 +32,10 @@ const UserProfile = () => {
         setEmail(userData.email || "");
         setPhoneNumber(userData.phoneNumber || "");
         setImagePreview(userData.profileImage || defaultImage);
-        setGender(userData.gender || '')
-        setBirthDay(userData.birthday|| "")
-        
+        setGender(userData.gender || "");
+        setBirthDay(userData.birthday || "");
       } catch (error) {
         console.error("Error fetching user data:", error);
-       
       }
     };
 
@@ -70,13 +67,15 @@ const UserProfile = () => {
         phoneNumber,
         profileImage: image,
         gender,
-        birthday
+        birthday,
       });
       setSuccessModal(true);
-      setSuccesText(`Updated Successfully`)
+      setSuccesText(`Updated Successfully`);
     } catch (error) {
-        setErrorText("An error occurred while updating your information. Please try again.");
-        setErrorModal(true);
+      setErrorText(
+        "An error occurred while updating your information. Please try again."
+      );
+      setErrorModal(true);
     }
   };
   const closeModal = () => {
@@ -140,36 +139,36 @@ const UserProfile = () => {
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
         <p className="userInfoText"> Your Gender</p>
-        
-<div className="form-check">
-  <input
-    type="radio"
-    name="gender"
-    value="Male"
-    className="form-check-input"
-    checked={gender === "Male"}
-    onChange={() => setGender("Male")}
-  />
-  Male
-  <input
-    type="radio"
-    name="gender"
-    value="Female"
-    className="form-check-input"
-    checked={gender === "Female"}
-    onChange={() => setGender("Female")}
-  />
-  Female
-  <input
-    type="radio"
-    name="gender"
-    value="Unknown"
-    className="form-check-input"
-    checked={gender === "Unknown"}
-    onChange={() => setGender("Unknown")}
-  />
-  Prefer not to say
-</div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            name="gender"
+            value="Male"
+            className="form-check-input"
+            checked={gender === "Male"}
+            onChange={() => setGender("Male")}
+          />
+          Male
+          <input
+            type="radio"
+            name="gender"
+            value="Female"
+            className="form-check-input"
+            checked={gender === "Female"}
+            onChange={() => setGender("Female")}
+          />
+          Female
+          <input
+            type="radio"
+            name="gender"
+            value="Unknown"
+            className="form-check-input"
+            checked={gender === "Unknown"}
+            onChange={() => setGender("Unknown")}
+          />
+          Prefer not to say
+        </div>
 
         <p className="userInfoText"> BirthDay </p>
         <input
@@ -184,20 +183,15 @@ const UserProfile = () => {
         <button type="button" className="saveBtns" onClick={handleSave}>
           Save
         </button>
-       
       </div>
-        {/* Success Modal */}
-        {successModal && (
+      {/* Success Modal */}
+      {successModal && (
         <Modal modalText={succesText} buttonText="Ok" closeModal={closeModal} />
       )}
 
       {/* Error Modal */}
       {errorModal && (
-        <Modal
-          modalText={errorText}
-          buttonText="Ok"
-          closeModal={closeModal}
-        />
+        <Modal modalText={errorText} buttonText="Ok" closeModal={closeModal} />
       )}
     </div>
   );

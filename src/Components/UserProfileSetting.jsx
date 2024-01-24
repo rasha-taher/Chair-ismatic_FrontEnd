@@ -12,7 +12,7 @@ import SwitchToSeller from "./UserProfile/SwitchToSeller";
 const UserProfileSetting = () => {
   const [activeSection, setActiveSection] = useState("Profile");
   const email = localStorage.getItem("loggedInUserEmail");
-  const wurl = "http://localhost:8080";
+  const wurl = "https://chair-ismatic-backend.onrender.com";
 
   const handleClick = (section) => {
     setActiveSection(section);
@@ -61,15 +61,15 @@ const UserProfileSetting = () => {
                 Change Password
               </li>
               {role == "customer" && (
-              <li
-                className={`user-menu-li ${
-                  activeSection === "yourOrder" ? "active" : ""
-                }`}
-                onClick={() => handleClick("yourOrder")}
-              >
-                Your Order
-              </li>
-                )}
+                <li
+                  className={`user-menu-li ${
+                    activeSection === "yourOrder" ? "active" : ""
+                  }`}
+                  onClick={() => handleClick("yourOrder")}
+                >
+                  Your Order
+                </li>
+              )}
               {role == "vendor" && (
                 <li
                   className={`user-menu-li ${
