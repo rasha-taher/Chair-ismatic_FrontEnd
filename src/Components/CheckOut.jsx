@@ -26,6 +26,7 @@ const CheckOut = () => {
   const [postalCode, setPostalCode] = useState("");
   const [successModal, setSuccessModal] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
+  const [askForLoginModal, setAskForLoginModal] = useState(false);
   const [errorText, setErrorText] = useState("");
   const [succesText, setSuccesText] = useState("");
   const [buttonText, setButtonText] = useState("");
@@ -33,6 +34,7 @@ const CheckOut = () => {
   const closeModal = () => {
     setSuccessModal(false);
     setErrorModal(false);
+    setAskForLoginModal(false)
   };
 
   const calculateSubtotal = () => {
@@ -46,19 +48,15 @@ const CheckOut = () => {
     try {
       // Validate input fields
       if (!email || !mobileNumber || !address) {
-        setErrorText("Please fill in all the required fields.");
-        setButtonText("Edit");
-        setModalFunction(closeModal);
+        setErrorText("Please fill in all the required fields.")
         setErrorModal(true);
         return;
       }
 
       // Check if the user is logged in
-      if (!email) {
+      if (!localStorage.getItem('loggedInUserEmail')) {
         setErrorText("Please Login Before Placing An Order!");
-        setButtonText("Login");
-        setModalFunction(handleProceed);
-        setErrorModal(true);
+      setAskForLoginModal(true);
         return;
       }
 
@@ -85,13 +83,9 @@ const CheckOut = () => {
 
       if (response.status >= 200 && response.status < 400) {
         setSuccessModal(true);
-        setButtonText("OK");
-        setModalFunction(closeModal);
         setSuccesText(`Order Placed Successfully!`);
       } else {
-        setErrorText("Failed to add bill. Please try again later.");
-        setButtonText("Edit");
-        setModalFunction(closeModal);
+        setErrorText("Please fill in all the required fields.")
         setErrorModal(true);
       }
     } catch (error) {
@@ -498,15 +492,22 @@ const CheckOut = () => {
       {successModal && (
         <Modal
           modalText={succesText}
-          buttonText={buttonText}
-          closeModal={() => modalFunction()}
+          buttonText="Ok"
+          closeModal={closeModal}
         />
       )}
       {errorModal && (
         <Modal
           modalText={errorText}
-          buttonText={buttonText}
+          buttonText="Edit"
           closeModal={closeModal}
+        />
+      )}
+       {askForLoginModal && (
+        <Modal
+          modalText={errorText}
+          buttonText="Login"
+          closeModal={handleProceed}
         />
       )}
 

@@ -28,7 +28,7 @@ const SignUp = () => {
   useEffect(() => {
     const result = PWD_REGEX.test(password);
     setValidPwd(result);
-    const match = password == matchPwd; // confirmation that will return a boolean
+    const match = password == matchPwd;
     setValidMatch(match);
   }, [password, matchPwd]);
 
@@ -38,15 +38,14 @@ const SignUp = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const v1 = Email_REGEX.test(email); 
+    const v1 = Email_REGEX.test(email);
     const v2 = PWD_REGEX.test(password);
-    
+
     if (!v1 || !v2 || !userType) {
       setErrorText("Invalid email, password, or user type. Please try again.");
       setErrorModal(true);
       return;
     }
-    
 
     try {
       const userResponse = await axios.post(wurl + "/user/addUser", {
@@ -61,36 +60,38 @@ const SignUp = () => {
         phoneNumber,
       });
 
-        localStorage.clear()
-        localStorage.setItem("loggedInUserEmail", email);
+      localStorage.clear();
+      localStorage.setItem("loggedInUserEmail", email);
 
-        console.log("User Type:", userType);
-        if (userType === "Customer") {
-          localStorage.setItem('role', 'customer');
-        } else if (userType === "Vendor") {
-          localStorage.setItem('role', 'vendor');
-        }
-        
-          setSuccessModal(true);
-          setSuccesText(`Welcome ${firstName} ${lastName}!`)
-      
+      console.log("User Type:", userType);
+      if (userType === "Customer") {
+        localStorage.setItem("role", "customer");
+      } else if (userType === "Vendor") {
+        localStorage.setItem("role", "vendor");
+      }
+
+      setSuccessModal(true);
+      setSuccesText(`Welcome ${firstName} ${lastName}!`);
+
       console.log(userResponse.data);
       console.log(userResponse.accessToken);
       console.log(JSON.stringify(userResponse.data));
     } catch (error) {
       console.error("Error adding user:", error);
-      setErrorText("An error occurred while creating the account. Please try again.");
+      setErrorText(
+        "An error occurred while creating the account. Please try again."
+      );
       setErrorModal(true);
     }
   };
   const handleProceed = () => {
-      window.location.href = "/";
-    }
+    window.location.href = "/";
+  };
   return (
     <div className="signUp">
       <div className="signUp-Left"></div>
       <div className="signUp-Right">
-      <form onSubmit={handleSubmit} className="inside-signUp-Right">
+        <form onSubmit={handleSubmit} className="inside-signUp-Right">
           <p className="signUpTitle">New User?</p>
           <p className="undertext">Enter Your Personal Information</p>
           <div className="signUp-information">
@@ -131,12 +132,12 @@ const SignUp = () => {
                 onFocus={() => setPwdFocus(true)}
                 onBlur={() => setPwdFocus(false)}
               />
+
               <input
                 type="password"
                 id="confirmPassword"
                 className="signUp-content"
                 placeholder="Confirm Password"
-              
                 onChange={(e) => setMatchPwd(e.target.value)}
                 required
                 aria-invalid={validMatch ? "false" : "true"}
@@ -145,29 +146,43 @@ const SignUp = () => {
                 onBlur={() => setMatchFocus(false)}
               />
             </div>
+
+            {!validPwd ? (
+              <p className="error-message">
+                Password must be at least 8 characters and include at least one
+                uppercase letter, one lowercase letter, and one digit.
+              </p>
+            ) : (
+              !validMatch && (
+                <p className="error-message">Passwords do not match.</p>
+              )
+            )}
+
             <select
-          className="signUp-content width-plus-select"
-          value={userType}
-          onChange={(e) => setUserType(e.target.value)}
-        >
-          <option value="">Select User Type</option>
-          <option value="Customer">Customer</option>
-          <option value="Vendor">Vendor</option>
-        </select>
-        
+              className="signUp-content width-plus-select"
+              value={userType}
+              onChange={(e) => setUserType(e.target.value)}
+            >
+              <option value="">Select User Type</option>
+              <option value="Customer">Customer</option>
+              <option value="Vendor">Vendor</option>
+            </select>
           </div>
           <div className="btn-div">
-          <button type="submit" className="signUpBtn">
-            Create Account
-          </button>
+            <button type="submit" className="signUpBtn">
+              Create Account
+            </button>
             <p> Already Have an account? Login </p>
           </div>
         </form>
       </div>
       {/* Success Modal */}
       {successModal && (
-        <Modal modalText={succesText} buttonText="Start Browsing" closeModal={handleProceed}/>
-       
+        <Modal
+          modalText={succesText}
+          buttonText="Start Browsing"
+          closeModal={handleProceed}
+        />
       )}
 
       {/* Error Modal */}

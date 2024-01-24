@@ -84,3 +84,8 @@
     width: 30px;
     height: 30px;
 }
+
+.conversation.clicked .userChatName {
+  
+    color: #ed5a5a;
+  }

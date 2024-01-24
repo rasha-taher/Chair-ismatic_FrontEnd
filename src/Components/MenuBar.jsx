@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../Style/MenuBar.css";
 import logo from "../Images/chairs-black.svg";
 import cart from "../Images/cart-black.svg";
 import user from "../Images/user.svg";
 import Modal from "./Modal";
+import burgerMenu from "../Images/lines-menu.svg";
 import { jwtDecode as jwt_decode } from "jwt-decode";
 const MenuBar = () => {
   const [loginVisible, setLoginVisible] = useState(false);
@@ -16,7 +17,10 @@ const MenuBar = () => {
   const [errorText, setErrorText] = useState(
     "Incorrect email or password. Please try again."
   );
-  const [succesText, setSuccesText] = useState("Welcome Back!");
+  const [showMenu, setMenu] = useState(false);
+  const handleMenu = () => {
+    setMenu(!showMenu);
+  };
   const wurl = "http://localhost:8080";
   const toggleLogin = () => {
     setLoginVisible(!loginVisible);
@@ -66,34 +70,26 @@ const MenuBar = () => {
     }
   };
 
-  const handleVendorLogin = async () => {
-    try {
-      const response = await fetch(wurl + "/user/vendor/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      if (response.ok) {
-        setSuccessModal(true);
-        setLoginVisible(false);
-        localStorage.clear();
-        localStorage.setItem("loggedInUserEmail", email);
-        localStorage.setItem("role", "customer");
-      } else {
-        setErrorModal(true);
-      }
-    } catch (error) {
-      console.error("Error logging in:", error);
-    }
-  };
-
   const closeModal = () => {
     setSuccessModal(false);
     setErrorModal(false);
   };
   const role = localStorage.getItem("role");
+  useEffect(() => {
+    const closeMenu = () => {
+      setMenu(false);
+    };
+
+    if (showMenu) {
+      document.addEventListener("click", closeMenu);
+    } else {
+      document.removeEventListener("click", closeMenu);
+    }
+
+    return () => {
+      document.removeEventListener("click", closeMenu);
+    };
+  }, [showMenu]);
 
   return (
     <div className="MenuBar">
@@ -103,7 +99,7 @@ const MenuBar = () => {
           <p className="logoText"> Chair-ismatic</p>
         </div>
       </Link>
-      <div className="menuPages">
+     <div className="menuPages nomres">
         <ul className="menu-ul">
           <Link to="/">
             {" "}
@@ -148,11 +144,62 @@ const MenuBar = () => {
         </ul>
       </div>
       <div className="menuIcons">
+      <div className="menuimg" onClick={handleMenu}>
+        <img src={burgerMenu} alt="logo" className="logoImage" />
+      </div>
+      {showMenu && (
+        <div className="menuPages insideResp" >
+          <ul className="menu-ul">
+            <Link to="/">
+              {" "}
+              <li className="menu-li">Home</li>{" "}
+            </Link>
+            {role !== "vendor" && (
+              <Link to="/products">
+                {" "}
+                <li className="menu-li">Products</li>{" "}
+              </Link>
+            )}
+            <Link to="/about">
+              {" "}
+              <li className="menu-li">About</li>{" "}
+            </Link>
+
+            {role && role !== "customer" && (
+              <Link to="/yourproduct">
+                {" "}
+                <li className="menu-li">Your Products</li>{" "}
+              </Link>
+            )}
+
+            {role && role !== "customer" && (
+              <Link to="/sellItems">
+                {" "}
+                <li className="menu-li">Sell Items</li>{" "}
+              </Link>
+            )}
+            {role && (
+              <Link to="/profile">
+                {" "}
+                <li className="menu-li">Your Profile</li>{" "}
+              </Link>
+            )}
+            {role && (
+              <Link to="/chats">
+                {" "}
+                <li className="menu-li">Your Chats</li>{" "}
+              </Link>
+            )}
+          </ul>
+        </div>
+      )}
+      <div>
         <img src={user} alt="user" className="menuIcon" onClick={toggleLogin} />
 
         <Link to="/cart">
           <img src={cart} alt="cart" className="menuIcon" />
         </Link>
+        </div>
       </div>
       {loginVisible && (
         <div className="overlay" onClick={closeLogin}>
@@ -191,7 +238,11 @@ const MenuBar = () => {
       )}
       {/* Success Modal */}
       {successModal && (
-        <Modal modalText={succesText} buttonText="Ok" closeModal={closeModal} />
+        <Modal
+          modalText="Welcome Back!"
+          buttonText="Ok"
+          closeModal={closeModal}
+        />
       )}
       {/* Error Modal */}
       {errorModal && (

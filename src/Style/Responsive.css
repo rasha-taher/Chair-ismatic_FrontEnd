@@ -1,178 +1,270 @@
 @media only screen and (min-width: 360px) and (max-width: 991px) {
-.carousel .list .item .title {
-    font-size: 40px;
-}
-.carousel .list .item .buttons{
+  .carousel .list .item .title {
+    font-size: 35px;
+  }
+  .carousel .list .item .buttons {
     display: flex;
     flex-direction: column;
-}
-.wrapper{
+  }
+  .wrapper {
     display: none;
-}
-.featuresSection{
+  }
+  .featuresSection {
     height: fit-content;
     padding: 20px;
-}
-.numbersSection{
+  }
+  .numbersSection {
     flex-direction: column;
-}
-.numberDiv{
+  }
+  .numberDiv {
     width: 95%;
     margin: 5px 0;
-}
-footer{
+  }
+  footer {
     flex-direction: column;
-}
-.footerDiv{
+  }
+  .footerDiv {
     width: 95%;
     margin: 5px 0;
-}
-.productsPageTitle{
+  }
+  .productsPageTitle {
     font-size: 35px;
-}
-.underText{
+  }
+  .underText {
     text-align: center;
     width: 90%;
-}
-.categoriesListDiv{
+  }
+  .categoriesListDiv {
     flex-wrap: wrap;
-}
-.singleCategories{
+  }
+  .singleCategories {
     font-size: 18px;
     margin-right: 0px;
-    margin: 5px ;
-}
-.productComponentImage{
+    margin: 5px;
+  }
+  .productComponentImage {
     width: 150px;
     height: 150px;
-}
-.productComponentName{
-    font-size: 15px
-}
-.insideUserProfile{
+  }
+  .productComponentName {
+    font-size: 15px;
+  }
+  .insideUserProfile {
     width: 95%;
-}
-.user-menu-bar{
+  }
+  .user-menu-bar {
     width: fit-content;
     padding: 5px;
-}
-.user-menu-li{
+  }
+  .user-menu-li {
     font-size: 16px;
-}
-.heroSectionRight{
+  }
+  .heroSectionRight {
     display: none;
-}
-.heroSectionLeft{
+  }
+  .heroSectionLeft {
     width: 90%;
-}
+  }
 
-.heroBigText {
+  .heroBigText {
     font-size: 40px;
-}
-.heroSmallText{
+  }
+  .heroSmallText {
     font-size: 17px;
     margin: 0;
     margin-bottom: 7px;
-}
-.numbersSection{
+  }
+  .numbersSection {
     flex-direction: row;
-    
-}
-.numberInNumberDiv{
-    font-size:30px;
-}
-.textInNumberDiv{
-    font-size: 17px
-}
-.aboutSection{
+  }
+  .numberInNumberDiv {
+    font-size: 30px;
+  }
+  .textInNumberDiv {
+    font-size: 17px;
+  }
+  .aboutSection {
     flex-direction: column;
     padding: 7px;
     margin-top: 15px;
-}
-.aboutSectionLeft{
+  }
+  .aboutSectionLeft {
     width: 95%;
     padding: 20px;
-}
-.aboutSectionTitle{
+  }
+  .aboutSectionTitle {
     font-size: 39px;
-}
-.aboutSectionRight{
-    display: none;
-}
-.whyUsText{
+  }
+
+  .whyUsText {
     font-size: 38px;
     text-align: center;
     padding: 15px;
-}
-.showDiv{
+  }
+  .showDiv {
     display: flex;
     width: 95%;
-}
-.reasonDiv{
+  }
+  .reasonDiv {
     width: fit-content;
-}
-.contactGif{
+  }
+  .contactGif {
     width: 90%;
     height: fit-content;
-}
-.width-plus{
+  }
+  .width-plus {
     width: 380px;
-}
-.signUp-Left{
+  }
+  .signUp-Left {
     display: none;
-}
-.signUp-Right{
+  }
+  .signUp-Right {
     width: 90%;
-}
-.inside-signUp-Right{
+  }
+  .inside-signUp-Right {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-.signUp{
+  }
+  .signUp {
     align-items: center;
     justify-content: center;
-}
-.colDisplay{
+  }
+  .colDisplay {
     flex-direction: column;
-}
-.userImage{
+  }
+  .userImage {
     width: 90px;
-    height:90px ;
-}
+    height: 90px;
+  }
 
-.userTitle{
+  .userTitle {
     font-size: 20px;
-}
-.nextToImage{
+  }
+  .nextToImage {
     margin-top: 12px;
-}
-.userInfoText{
+  }
+  .userInfoText {
     font-size: 18px;
-}
-.user-btn-div{
+  }
+  .user-btn-div {
     margin: 10px 0;
     display: flex;
-}
-.deleteText{
+  }
+  .deleteText {
     margin: 10px 0;
-}
-.updateDataBtn {
+  }
+  .updateDataBtn {
     width: fit-content;
-}
-.table-data-title{
-    font-size: 15px
-}
-.user-menu-content{
+  }
+  .table-data-title {
+    font-size: 15px;
+  }
+  .user-menu-content {
     padding: 15px;
-}
-.form-check{
+  }
+  .form-check {
     margin-bottom: 0px;
     font-size: 15px;
-}
-.form-check input{
+  }
+  .form-check input {
     margin-right: 6px;
     margin-top: -18px;
+  }
+  .login-Left {
+    width: 70%;
+    left: 10%;
+  }
+  .loginBtn {
+    padding: 7px;
+  }
+  .insideCheckOut {
+    flex-direction: column;
+  }
+  .ShippingDetails {
+    width: 90%;
+    border-right: none;
+  }
+  .paymentDiv {
+    width: 300px;
+  }
+
+  .cartFinalDetail {
+    width: 90%;
+  }
+  .carousel .list .item .buttons button {
+    width: 150px;
+    padding: 8px;
+  }
+  .featureQuestion {
+    font-size: 25px;
+  }
+  .latestItemRow a {
+    font-size: 19px;
+  }
+
+  .contactInputDiv {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+  }
+  .cartTitle {
+    font-size: 25px;
+  }
+
+  .continueShopping {
+    font-size: 15px;
+    margin-top: 6px;
+  }
+
+  .tableHead {
+    font-size: 20px;
+  }
+  .insideViewCart {
+    width: 100%;
+  }
+  .fullPrice {
+    font-size: 18px;
+  }
+
+  .proceedBtn {
+    font-size: 17px;
+  }
+  .displayNone{
+    display: none;
+  }
+  .carousel .list .item .content {
+    top: 15%;
+    left: 80%;
+  }
+  .featureTitle {
+    font-size: 21px;
+  }
+  .category-li-title{
+    font-size: 20px;
+  }
+  .featureSubTitle{ 
+    font-size: 22px;
+  }
+  .featureDesc {
+    color: #000;
+    width: 90%;
 }
+.lastestProductImage {
+  width: 150px;
+  height: 150px;
+}
+.lastestProductProduct {
+  cursor: pointer;
+  margin: 3px;
+}
+.latestProductName {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
 }

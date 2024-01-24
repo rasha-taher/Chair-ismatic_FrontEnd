@@ -11,21 +11,34 @@ import Message from "./MessageDiv";
 
 const Chats = () => {
   const user = localStorage.getItem("loggedInUserEmail");
+  const userRole = localStorage.getItem("role"); 
 
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
-  const [onlineUsers, setOnlineUsers] = useState([]);
+  const [vendors, setVendors] = useState([]);
+  const [clickedUser, setClickedUser] = useState(null);
   const socket = useRef();
-  const [selectedUser, setSelectedUser] = useState(null);
   const wurl = "http://localhost:8080";
   const scrollRef = useRef();
+  const handleConversationClick = (user) => {
+    setClickedUser(user);
+  };
+
+  
+  useEffect(() => {
+    axios
+    .get(wurl + "/user/vendors")
+    .then((response) => setVendors(response.data))
+    .catch((error) => console.error("Error fetching customer data:", error));
+  }, []);
 
   useEffect(() => {
-    socket.current = io("ws://localhost:8000");
+    socket.current = io("http://localhost:8900");
     socket.current.on("getMessage", (data) => {
+      console.log("Received message:", data);
       setArrivalMessage({
         sender: data.senderEmail,
         text: data.text,
@@ -33,25 +46,15 @@ const Chats = () => {
       });
     });
   }, []);
-
+  
 
   useEffect(() => {
     arrivalMessage &&
       currentChat?.members.includes(arrivalMessage.sender) &&
       setMessages((prev) => [...prev, arrivalMessage]);
   }, [arrivalMessage, currentChat]);
-
-  useEffect(() => {
-    if (user && user.followings) {  // Check if user and user.followings are defined
-      socket.current.emit("addUser", user._id);
-      socket.current.on("getUsers", (users) => {
-        setOnlineUsers(
-          user.followings.filter((f) => users.some((u) => u.userEmail === f))
-        );
-      });
-    }
-  }, [user]);
   
+
   useEffect(() => {
     const getConversations = async () => {
       try {
@@ -81,35 +84,78 @@ const Chats = () => {
     getMessages();
   }, [currentChat]);
 
+  useEffect(() => {
+    const getOrCreateConversation = async () => {
+      try {
+        if (clickedUser) {
+          const res = await axios.get(
+            wurl +
+              `/conversation/getConversationOfTwoUser/${user}/${clickedUser.email}`
+          );
+  
+          if (res.data) {
+            setCurrentChat(res.data);
+          } else {
+            const newConversationRes = await axios.post(
+              wurl + "/conversation/newConversation",
+              {
+                members: [user, clickedUser.email],
+              }
+            );
+            setCurrentChat(newConversationRes.data);
+          }
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  
+    getOrCreateConversation();
+  }, [user, clickedUser]);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const message = {
-      sender: user,
-      text: newMessage,
-      conversationId: currentChat._id,
-    };
-
-    const receiverId = currentChat.members.find(
-      (member) => member !== user.email
-    );
-
-    socket.current.emit("sendMessage", {
-      senderId: user,
-      receiverId,
-      text: newMessage,
-    });
-
+  
     try {
+      if (!currentChat || !currentChat.members) {
+        // If no currentChat, create a new conversation
+        const newConversationData = {
+          senderEmail: user,
+          receiverEmail: clickedUser.email,
+        };
+  
+        const newConversationRes = await axios.post(
+          wurl + "/conversation/newConversation",
+          newConversationData
+        );
+  
+        const newConversation = newConversationRes.data;
+        setCurrentChat(newConversation);
+      }
+  
+      const message = {
+        sender: user,
+        text: newMessage,
+        conversationId: currentChat._id,
+      };
+  
+      const receiverId = currentChat.members.find(
+        (member) => member !== user.email
+      );
+  
+      socket.current.emit("sendMessage", {
+        senderId: user,
+        receiverId,
+        text: newMessage,
+      });
+  
       const res = await axios.post(wurl + "/message/addMessage/", message);
       setMessages([...messages, res.data]);
       setNewMessage("");
     } catch (err) {
-      console.log(err);
+      console.error("Error handling submit:", err);
     }
   };
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
 
   return (
     <div>
@@ -118,9 +164,10 @@ const Chats = () => {
         <div key={user} className="insideUserProfile">
           <div className="user-chat-bar">
             <div className="chatTitle">Recent Chats</div>
-            {conversations.map((c) => (
-              <div onClick={() => setCurrentChat(c)}>
-                <Conversations conversation={c} currentUser={user} />
+            {vendors.map((c) => (
+              <div key={c.email} onClick={() => setCurrentChat(c)}>
+                <Conversations currentUser={c}    onClick={handleConversationClick}
+                 isClicked={clickedUser === c}/>
               </div>
             ))}
           </div>
@@ -129,7 +176,7 @@ const Chats = () => {
             {currentChat ? (
               <div ref={scrollRef}>
                 {messages.map((m) => (
-                  <Message message={m} own={m.sender === user} />
+                  <Message key={m._id} message={m} own={m.sender === user} />
                 ))}
               </div>
             ) : (

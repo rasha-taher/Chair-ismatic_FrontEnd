@@ -34,7 +34,7 @@ const About = () => {
             <div className="numbersSection">
               <div className="numberDiv">
                 <p className="numberInNumberDiv"> 200+</p>
-                <p className="textInNumberDiv"> Unique Style</p>
+                <p className="textInNumberDiv"> Unique Set Style</p>
               </div>
 
               <div className="numberDiv">
@@ -77,7 +77,7 @@ const About = () => {
               inspires transformation within spaces.
             </p>
           </div>
-          <div className="aboutSectionRight">
+          <div className="aboutSectionRight displayNone">
             <img src={about} alt="about image " className="aboutImage" />
             <div className="backDivOfImage"></div>
           </div>

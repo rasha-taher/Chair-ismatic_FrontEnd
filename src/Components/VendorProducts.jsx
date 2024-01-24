@@ -75,32 +75,35 @@ const VendorProducts = () => {
         <p className="productsPageTitle"> Your Products </p>
         <div className="productCategoriesList">
           <div className="innerProductCategoriesList">
-            {products.map((product) => (
-              <div key={product._id} className="productWrapper">
-                <Link to={`/productDetails/${product._id}`}>
-                  <ProductComponent
-                    image={getImageSrc(product.image)}
-                    productName={product.name}
-                    price={product.price}
-                    discount={product.discountPrice}
-                    showDiscount={product.showDiscount}
-                    soldOut={product.soldOut}
-                  />
-                </Link>
-                <div className="productBtn">
-                  <Link to={`/editProduct/${product._id}`}>
-                    <button className="editProductBtn">Edit Product</button>
-                  </Link>
-
-                  <button
-                    className="editProductBtn deleteBtn"
-                    onClick={() => deleteProduct(product._id)}
-                  >
-                    Delete Product
-                  </button>
-                </div>
-              </div>
-            ))}
+          {products.length === 0 ? (
+  <div className="noProductYet">You haven't added any product yet.</div>
+) : (
+  products.map((product) => (
+    <div key={product._id} className="productWrapper">
+      <Link to={`/productDetails/${product._id}`}>
+        <ProductComponent
+          image={getImageSrc(product.image)}
+          productName={product.name}
+          price={product.price}
+          discount={product.discountPrice}
+          showDiscount={product.showDiscount}
+          soldOut={product.soldOut}
+        />
+      </Link>
+      <div className="productBtn">
+        <Link to={`/editProduct/${product._id}`}>
+          <button className="editProductBtn">Edit Product</button>
+        </Link>
+        <button
+          className="editProductBtn deleteBtn"
+          onClick={() => deleteProduct(product._id)}
+        >
+          Delete Product
+        </button>
+      </div>
+    </div>
+  ))
+)}
           </div>
         </div>
       </div>

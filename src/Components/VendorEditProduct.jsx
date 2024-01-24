@@ -26,7 +26,7 @@ const VendorEditProduct = () => {
   const wurl = "http://localhost:8080";
 
   const handleProceed = () => {
-    window.location.href = "/yourproduct";
+    window.location.href = `/productDetails/${id}`;
   };
 
   const handleImageUpload = (event) => {
@@ -107,12 +107,11 @@ const VendorEditProduct = () => {
     setErrorModal(false);
   };
 
-
   const handleColorChange = (index, newColor) => {
     const updatedColors = [...colors];
     updatedColors[index] = newColor;
-    setColors(updatedColors);
-  };
+    setColors(updatedColors); 
+  }
   return (
     <div>
       <MenuBar />
@@ -161,7 +160,9 @@ const VendorEditProduct = () => {
                       chosenColorIndex === index ? "selected" : ""
                     }`}
                     value={c}
-                    onChange={(e) => handleColorChange(index, e.target.value)}
+                    onChange={(e) =>{ handleColorChange(index, e.target.value)
+                    
+                      setChosenColorIndex(index);}}
                   />
                 ))}
               </div>

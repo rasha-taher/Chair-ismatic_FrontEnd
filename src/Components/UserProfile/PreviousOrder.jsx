@@ -10,7 +10,7 @@ const PreviousOrder = () => {
   const fetchOrders = async () => {
     try {
       const response = await axios.get(`${wurl}/bill/getBillByEmail/${email}`);
-      console.log("Order details:", response.data);
+
       setOrder(response.data);
     } catch (error) {
       console.error("Error fetching product details:", error);
@@ -18,16 +18,20 @@ const PreviousOrder = () => {
   };
   const handleUpdateOrder = async (id) => {
     try {
-
       const response = await axios.put(`${wurl}/bill/cancelOrder/${id}`);
-      console.log("Order details:", response.data);
-      fetchOrders();
+  
+      if (response.status === 200) {
+        console.log("Order details after cancellation:", response.data);
+        fetchOrders();
+      } else {
+        console.error("Error updating order status:", response.data.error || 'Unknown error');
+      }
     } catch (error) {
-      console.error("Error updating order status:", error);
+      console.error("Error updating order status:", error.message || 'Unknown error');
     }
   };
-
-
+  
+  
   useEffect(() => {
     fetchOrders();
   }, [email]);
