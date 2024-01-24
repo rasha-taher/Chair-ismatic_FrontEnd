@@ -14,7 +14,7 @@ const ProductDescription = () => {
   const { cart, setCart } = useCart();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0); // Added state for the selected image index
   const [chosenColorIndex, setChosenColorIndex] = useState(0);
-  const wurl = "http://localhost:8080";
+  const wurl = "https://chair-ismatic-backend.onrender.com";
 
   useEffect(() => {
     const fetchProductById = async () => {
