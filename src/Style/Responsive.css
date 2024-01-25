@@ -11,7 +11,7 @@
   }
   .featuresSection {
     height: fit-content;
-    padding: 20px;
+    padding: 10px;
   }
   .numbersSection {
     flex-direction: column;
@@ -67,7 +67,8 @@
   }
 
   .heroBigText {
-    font-size: 40px;
+    font-size: 36px;
+    margin-bottom: 15px;
   }
   .heroSmallText {
     font-size: 17px;
@@ -78,15 +79,15 @@
     flex-direction: row;
   }
   .numberInNumberDiv {
-    font-size: 30px;
+    font-size: 27px;
   }
   .textInNumberDiv {
-    font-size: 17px;
+    font-size: 15px;
   }
   .aboutSection {
     flex-direction: column;
     padding: 7px;
-    margin-top: 15px;
+    margin: 0px;
   }
   .aboutSectionLeft {
     width: 95%;
@@ -104,8 +105,10 @@
   .showDiv {
     display: flex;
     width: 95%;
+    left:0;
   }
   .reasonDiv {
+    height: 100px;
     width: fit-content;
   }
   .contactGif {
@@ -120,14 +123,17 @@
   }
   .signUp-Right {
     width: 90%;
-  }
-  .inside-signUp-Right {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
+  .inside-signUp-Right {
+     width: 100%;
+  }
   .signUp {
+   height: 100vh;
+    width: 90%;
+    display: flex;
     align-items: center;
     justify-content: center;
   }
@@ -271,15 +277,15 @@
   width: 150px;
 }
 .smallImages {
-  height: 80px;
-  width: 80px;
+  height: 72px;
+  width: 42px;
 }
 .productCategory {
-  width: 150px;
-  height: 30px;
+  width: 120px;
+  height: 20px;
   padding: 5px;
-  margin: 10px 0;
-  font-size: 18px;
+  margin: 5px 0;
+  font-size: 16px;
 }
 
 .productName {
@@ -287,6 +293,7 @@
 }
 .productPrice {
   font-size: 20px;
+  margin: 6px 0;
 }
 .flexRow p {
   font-size: 15px;
@@ -303,6 +310,7 @@
 }
 .buttonsDiv{
   flex-direction: column;
+  margin: 0;
 }
 
 .numberButton {
@@ -315,5 +323,46 @@
   width: 110px;
   height: 40px;
   font-size:18px;
+  margin-top: 3.5px;
 }
+.login-page-Right{
+	display: none;
+}
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+login-page-Left {
+  width: 90%;
+}
+  .productComponentDiscount {
+	    margin-right: 12px;
+    margin-top: 10px;
+}
+  .footerLogoDiv {
+     margin-bottom: 5px;
+}
+
+.footerTitle{
+    font-size: 22px;
+     margin-bottom: 5px;
+}
+
+.footer-li {
+    margin-bottom: 7px;
+}
+.featureLeftDiv {
+  padding: 10px;
+}
+ .shopNowBtn {
+    width: 125px;
+    height: 35px;
+    font-size: 20px;	
+    margin: 6px 0;
+}
+  .category-li-div{
+      padding: 10px;
+  }
 }
