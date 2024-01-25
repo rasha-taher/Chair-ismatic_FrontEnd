@@ -23,14 +23,11 @@
   /* align-items: center; */
   justify-content: center;
   background-color: white;
-  padding: 30px;
-  border-radius: 5px;
+  padding: 60px;
+  border-radius: 10px;
   z-index: 1000;
-  height: 67.5vh;
-  padding-top: 200px;
+  height: fit-content;
   position: relative;
-  left: 35%;
-  overflow-y: hidden;
 }
 .loginTitle {
   font-size: 40px;
