@@ -72,7 +72,7 @@ const SwitchToClient = () => {
   };
   const handleProceed = () => {
   localStorage.removeItem("cart");
-   location.reload();
+  window.location.reload();
   };
 
   return (
