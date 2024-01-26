@@ -44,6 +44,7 @@ const CheckOut = () => {
     window.location.href = "/login";
   };
    const handleProceedOrder = () => {
+  localStorage.removeItem("cart");
    location.reload();
   };
 
