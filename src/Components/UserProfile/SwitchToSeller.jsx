@@ -70,6 +70,10 @@ const SwitchToSeller = () => {
     setBecomeClientSuccess(false);
     setAlreadyAVendor(false);
   };
+  const handleProceed = () => {
+  localStorage.removeItem("cart");
+  location.reload();
+  };
   return (
     <div>
       <p className="userTitle"> Switch To Vendor </p>
@@ -105,14 +109,14 @@ const SwitchToSeller = () => {
         <Modal
           modalText="Switched To Vendor Successfully!"
           buttonText="Ok"
-          closeModal={closeModal}
+          closeModal={handleProceed}
         />
       )}
       {becomeClientSuccess && (
         <Modal
           modalText="You are Now A Vendor Successfully!"
           buttonText="Ok"
-          closeModal={closeModal}
+          closeModal={handleProceed}
         />
       )}
       {alreadyAVendor && (
