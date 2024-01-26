@@ -43,6 +43,9 @@ const CheckOut = () => {
   const handleProceed = () => {
     window.location.href = "/login";
   };
+   const handleProceedOrder = () => {
+    window.reload();
+  };
 
   const addBill = async () => {
     try {
@@ -490,7 +493,7 @@ const CheckOut = () => {
       </div>
       {/* Success Modal */}
       {successModal && (
-        <Modal modalText={succesText} buttonText="Ok" closeModal={closeModal} />
+        <Modal modalText={succesText} buttonText="Ok" closeModal={handleProceedOrder} />
       )}
       {errorModal && (
         <Modal
