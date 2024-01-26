@@ -45,7 +45,7 @@ const CheckOut = () => {
   };
    const handleProceedOrder = () => {
   localStorage.removeItem("cart");
-   location.reload();
+  window.location.reload();
   };
 
   const addBill = async () => {
