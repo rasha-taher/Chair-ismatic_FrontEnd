@@ -44,7 +44,7 @@ const CheckOut = () => {
     window.location.href = "/login";
   };
    const handleProceedOrder = () => {
-    window.reload();
+   location.reload();
   };
 
   const addBill = async () => {
