@@ -70,6 +70,10 @@ const SwitchToClient = () => {
     setBecomeClientSuccess(false);
     setAlreadyAclient(false);
   };
+  const handleProceed = () => {
+  localStorage.removeItem("cart");
+   location.reload();
+  };
 
   return (
     <div>
@@ -106,14 +110,14 @@ const SwitchToClient = () => {
         <Modal
           modalText="Switched To Client Successfully!"
           buttonText="Ok"
-          closeModal={closeModal}
+          closeModal={handleProceed}
         />
       )}
       {becomeClientSuccess && (
         <Modal
           modalText="You are Now A Client Successfully!"
           buttonText="Ok"
-          closeModal={closeModal}
+          closeModal={handleProceed}
         />
       )}
       {alreadyAclient && (
