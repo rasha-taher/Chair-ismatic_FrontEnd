@@ -72,7 +72,7 @@ const SwitchToSeller = () => {
   };
   const handleProceed = () => {
   localStorage.removeItem("cart");
-  location.reload();
+  window.location.reload();
   };
   return (
     <div>
