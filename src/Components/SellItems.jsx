@@ -21,7 +21,7 @@ const SellItems = () => {
   const [errorText, setErrorText] = useState("");
   const [succesText, setSuccesText] = useState("");
   const wurl = "https://chair-ismatic-backend.onrender.com";
-  const email = localStorage.getItem("loggedInUserEmail");
+  const email = sessionStorage.getItem("loggedInUserEmail");
 
   const handleProceed = () => {
     window.location.href = "/yourproduct";

@@ -19,7 +19,7 @@ const AdminLogin = () => {
 
       if (response.ok) {
         // Login successful
-        localStorage.setItem("role", data.data.is_admin ? "admin" : "");
+        sessionStorage.setItem("role", data.data.is_admin ? "admin" : "");
         window.location.href = "/dashboard"; // Redirect to the dashboard
       } else {
         // Handle login failure

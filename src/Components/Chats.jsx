@@ -9,8 +9,8 @@ import Conversations from "./Conversations";
 import Message from "./MessageDiv";
 
 const Chats = () => {
-  const user = localStorage.getItem("loggedInUserEmail");
-  const userRole = localStorage.getItem("role");
+  const user = sessionStorage.getItem("loggedInUserEmail");
+  const userRole = sessionStorage.getItem("role");
 
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);

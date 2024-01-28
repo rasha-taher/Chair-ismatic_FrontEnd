@@ -16,6 +16,7 @@ import AdminCategories from './AdminCategories'
 const Dashboard = () => {
   const handleLogout = () => {
     localStorage.clear();
+    sessionStorage.clear();
     window.location.href = "/admin";
   };
   const [activeSection, setActiveSection] = useState(null);

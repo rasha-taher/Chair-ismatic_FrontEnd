@@ -18,9 +18,10 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-        // Assuming the server response includes a data field with accessToken
         const accessToken = data.data.accessToken;
-        // Store the accessToken securely (e.g., in local storage or a state management tool)
+
+        document.cookie = `access_token=${accessToken}; path=/; max-age=${30 * 60}`;
+        window.location.href = "/";
         console.log("Login successful! Access Token:", accessToken);
       } else {
         // Handle error responses

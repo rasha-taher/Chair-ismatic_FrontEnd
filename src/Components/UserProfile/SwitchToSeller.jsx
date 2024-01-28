@@ -3,13 +3,13 @@ import axios from "axios";
 import Modal from "../Modal";
 
 const SwitchToSeller = () => {
-  const role = localStorage.getItem("role");
+  const role = sessionStorage.getItem("role");
   const [switchSuccessful, setSwitchSuccessful] = useState(false);
   const [becomeClientSuccess, setBecomeClientSuccess] = useState(false);
   const [alreadyAVendor, setAlreadyAVendor] = useState(false);
   const [askToSwitch, setAskToSwitch] = useState(false);
   const wurl = "https://chair-ismatic-backend.onrender.com";
-  const email = localStorage.getItem("loggedInUserEmail");
+  const email = sessionStorage.getItem("loggedInUserEmail");
 
   useEffect(() => {
     const checkIsVendor = async () => {
@@ -33,7 +33,7 @@ const SwitchToSeller = () => {
       const response = await axios.put(wurl + `/user/updateIsVendor/${email}`);
 
       if (response.data.message === "is_client updated successfully") {
-        localStorage.setItem("role", "vendor");
+        sessionStorage.setItem("role", "vendor");
         setSwitchSuccessful(true);
         setAskToSwitch(false);
         setAlreadyAVendor(false);
@@ -52,7 +52,7 @@ const SwitchToSeller = () => {
 
       if (!response.data.isClient) {
         await axios.put(wurl + `/user/updateIsVendor/${email}`);
-        localStorage.setItem("role", "vendor");
+        sessionStorage.setItem("role", "vendor");
         setBecomeClientSuccess(true);
         setAskToSwitch(false);
         setAlreadyAVendor(false);
@@ -71,7 +71,7 @@ const SwitchToSeller = () => {
     setAlreadyAVendor(false);
   };
   const handleProceed = () => {
-  localStorage.removeItem("cart");
+  sessionStorage.removeItem("cart");
   window.location.reload();
   };
   return (

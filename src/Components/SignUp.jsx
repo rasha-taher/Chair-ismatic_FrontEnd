@@ -60,14 +60,14 @@ const SignUp = () => {
         phoneNumber,
       });
 
-      localStorage.clear();
-      localStorage.setItem("loggedInUserEmail", email);
+      sessionStorage.clear();
+      sessionStorage.setItem("loggedInUserEmail", email);
 
       console.log("User Type:", userType);
       if (userType === "Customer") {
-        localStorage.setItem("role", "customer");
+        sessionStorage.setItem("role", "customer");
       } else if (userType === "Vendor") {
-        localStorage.setItem("role", "vendor");
+        sessionStorage.setItem("role", "vendor");
       }
 
       setSuccessModal(true);

@@ -16,7 +16,7 @@ const CheckOut = () => {
     return `data:${imageType};base64,${imageData}`;
   };
 
-  const [email, setEmail] = useState(localStorage.getItem("loggedInUserEmail"));
+  const [email, setEmail] = useState(sessionStorage.getItem("loggedInUserEmail"));
   const [phoneNumber, setPhoneNumber] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -58,7 +58,7 @@ const CheckOut = () => {
       }
 
       // Check if the user is logged in
-      if (!localStorage.getItem("loggedInUserEmail")) {
+      if (!sessionStorage.getItem("loggedInUserEmail")) {
         setErrorText("Please Login Before Placing An Order!");
         setAskForLoginModal(true);
         return;

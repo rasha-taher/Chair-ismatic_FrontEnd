@@ -8,7 +8,7 @@ const UserProfile = () => {
   const [image, setImage] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState(localStorage.getItem("loggedInUserEmail"));
+  const [email, setEmail] = useState(sessionStorage.getItem("loggedInUserEmail"));
   const [phoneNumber, setPhoneNumber] = useState("");
   const [gender, setGender] = useState("");
   const [birthday, setBirthDay] = useState("");

@@ -11,14 +11,14 @@ import SwitchToClient from "./UserProfile/SwitchToClient";
 import SwitchToSeller from "./UserProfile/SwitchToSeller";
 const UserProfileSetting = () => {
   const [activeSection, setActiveSection] = useState("Profile");
-  const email = localStorage.getItem("loggedInUserEmail");
+  const email = sessionStorage.getItem("loggedInUserEmail");
   const wurl = "https://chair-ismatic-backend.onrender.com";
 
   const handleClick = (section) => {
     setActiveSection(section);
   };
   const handleLogout = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     window.location.href = "/";
   };
   const handleConfirmDelete = async () => {
@@ -27,7 +27,7 @@ const UserProfileSetting = () => {
         wurl + `/user/deleteUserByEmail/${email}`
       );
       if (response.data.success) {
-        localStorage.clear();
+        sessionStorage.clear();
         window.location.href = "/";
       } else {
         console.error("Error deleting user:", response.data.message);
@@ -36,7 +36,7 @@ const UserProfileSetting = () => {
       console.error("Error deleting user:", error);
     }
   };
-  const role = localStorage.getItem("role");
+  const role = sessionStorage.getItem("role");
   return (
     <div>
       <MenuBar />

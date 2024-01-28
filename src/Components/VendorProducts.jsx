@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const VendorProducts = () => {
   const [products, setProducts] = useState([]);
   const wurl = "https://chair-ismatic-backend.onrender.com";
-  const email = localStorage.getItem("loggedInUserEmail");
+  const email = sessionStorage.getItem("loggedInUserEmail");
   const [successModal, setSuccessModal] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
   const [errorText, setErrorText] = useState("");

@@ -14,7 +14,7 @@ const ChangePassword = () => {
   const apiUrl = "https://chair-ismatic-backend.onrender.com";
 
   const handleProceed = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     window.location.href = "/";
   };
 
@@ -28,7 +28,7 @@ const ChangePassword = () => {
         );
       }
 
-      const userEmail = localStorage.getItem("loggedInUserEmail");
+      const userEmail = sessionStorage.getItem("loggedInUserEmail");
 
       const response = await axios.put(`${apiUrl}/user/updatePassword`, {
         email: userEmail,

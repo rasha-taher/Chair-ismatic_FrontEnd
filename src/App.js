@@ -25,7 +25,7 @@ import OrderDetail from "./Components/AdminDashboard/OrderDetail.jsx";
 import EditOrderDetail from "./Components/AdminDashboard/EditOrderDetail.jsx";
 import Chats from "./Components/Chats.jsx";
 function App() {
-  const userRole = localStorage.getItem("role");
+  const userRole = sessionStorage.getItem("role");
   const PrivateRouteCustomer = ({ element }) => {
     return userRole === "customer" ? (
       element

@@ -3,7 +3,7 @@ import "../../Style/Admin.css";
 import axios from "axios";
 const PreviousOrder = () => {
   const [orders, setOrders] = useState([]);
-  const email = localStorage.getItem("loggedInUserEmail");
+  const email = sessionStorage.getItem("loggedInUserEmail");
   const wurl = "https://chair-ismatic-backend.onrender.com";
 
   const fetchOrders = async () => {

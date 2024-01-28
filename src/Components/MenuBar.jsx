@@ -10,7 +10,7 @@ import { jwtDecode as jwt_decode } from "jwt-decode";
 const MenuBar = () => {
   const [loginVisible, setLoginVisible] = useState(false);
   const [switchToSeller, serSwitchToSeller] = useState(false);
-  const [email, setEmail] = useState(localStorage.getItem("loggedInUserEmail"));
+  const [email, setEmail] = useState(sessionStorage.getItem("loggedInUserEmail"));
   const [password, setPassword] = useState("");
   const [successModal, setSuccessModal] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
@@ -53,9 +53,9 @@ const MenuBar = () => {
 
           setSuccessModal(true);
           setLoginVisible(false);
-          localStorage.clear();
-          localStorage.setItem("loggedInUserEmail", email);
-          localStorage.setItem("role", userRole);
+          sessionStorage.clear();
+          sessionStorage.setItem("loggedInUserEmail", email);
+          sessionStorage.setItem("role", userRole);
         } else {
           console.error("Error logging in: Invalid response structure", data);
           setErrorModal(true);
@@ -74,7 +74,7 @@ const MenuBar = () => {
     setSuccessModal(false);
     setErrorModal(false);
   };
-  const role = localStorage.getItem("role");
+  const role = sessionStorage.getItem("role");
   useEffect(() => {
     const closeMenu = () => {
       setMenu(false);
