@@ -17,7 +17,7 @@ const CheckOut = () => {
   };
 
   const [email, setEmail] = useState(localStorage.getItem("loggedInUserEmail"));
-  const [mobileNumber, setMobileNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [country, setCountry] = useState("");
@@ -51,7 +51,7 @@ const CheckOut = () => {
   const addBill = async () => {
     try {
       // Validate input fields
-      if (!email || !mobileNumber || !address) {
+      if (!email || !phoneNumber || !address) {
         setErrorText("Please fill in all the required fields.");
         setErrorModal(true);
         return;
@@ -70,7 +70,7 @@ const CheckOut = () => {
         userEmail: email,
         firstName,
         lastName,
-        phoneNumber: mobileNumber,
+        phoneNumber,
         country,
         city,
         streetAddress: address,
@@ -112,10 +112,10 @@ const CheckOut = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
-              type="text"
+              type="number"
               className="signUp-content width-plus"
               placeholder="Enter Your Mobile Number"
-              onChange={(e) => setMobileNumber(e.target.value)}
+              onChange={(e) => setPhoneNumber(e.target.value)}
             />
             <p className="shippingTitle">Address Information</p>
             <div className="signUp-information-row">
@@ -436,7 +436,7 @@ const CheckOut = () => {
                 onChange={(e) => setCity(e.target.value)}
               />
               <input
-                type="text"
+                type="number"
                 className="signUp-content"
                 placeholder="Postal Code"
                 onChange={(e) => setPostalCode(e.target.value)}

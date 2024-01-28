@@ -4,7 +4,6 @@ import Footer from "./Footer";
 import "../Style/Chats.css";
 import axios from "axios";
 import send from "../Images/send.svg";
-import userNotFound from "../Images/nonprof.png";
 import { io } from "socket.io-client";
 import Conversations from "./Conversations";
 import Message from "./MessageDiv";
@@ -174,7 +173,7 @@ const Chats = () => {
 
           <div className="user-chat-content">
             {currentChat ? (
-              <div ref={scrollRef}>
+              <div className='user-chat-messages'ref={scrollRef}>
                 {messages.map((m) => (
                   <Message key={m._id} message={m} own={m.sender === user} />
                 ))}

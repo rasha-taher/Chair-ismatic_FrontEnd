@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "../../Style/Admin.css";
 import axios from "axios";
-
 const PreviousOrder = () => {
-  const [orders, setOrder] = useState([]);
+  const [orders, setOrders] = useState([]);
   const email = localStorage.getItem("loggedInUserEmail");
   const wurl = "https://chair-ismatic-backend.onrender.com";
 
   const fetchOrders = async () => {
     try {
       const response = await axios.get(`${wurl}/bill/getBillByEmail/${email}`);
-
-      setOrder(response.data);
+      setOrders(response.data);
     } catch (error) {
       console.error("Error fetching product details:", error);
     }
   };
+
   const handleUpdateOrder = async (id) => {
     try {
       const response = await axios.put(`${wurl}/bill/cancelOrder/${id}`);
-
       if (response.status === 200) {
         console.log("Order details after cancellation:", response.data);
         fetchOrders();
@@ -63,12 +61,17 @@ const PreviousOrder = () => {
                 <td className="table-data-data">{order.totalPrice}</td>
                 <td className="table-data-data">{order.status}</td>
                 <td className="table-data-data">
-                  <button
-                    className="updateDataBtn"
-                    onClick={() => handleUpdateOrder(order._id)}
-                  >
-                    Cancel Order
-                  </button>
+                  {order.status !== "Canceled" ? (
+                    <button
+                      className="updateDataBtn"
+                      onClick={() => handleUpdateOrder(order._id)}
+                      disabled={order.status === "Canceled"}
+                    >
+                      Cancel Order
+                    </button>
+                  ) : (
+                    ""
+                  )}
                 </td>
               </tr>
             ))}
@@ -77,4 +80,5 @@ const PreviousOrder = () => {
     </div>
   );
 };
+
 export default PreviousOrder;

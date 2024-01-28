@@ -3,6 +3,7 @@ import "../../Style/Admin.css";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import DashBoardHome from "./Dashboard";
+import Modal from "../Modal";
 const EditOrderDetail = () => {
   const { id } = useParams();
   const [order, setOrder] = useState(null);
@@ -12,9 +13,19 @@ const EditOrderDetail = () => {
     "Completed",
     "Canceled",
   ]);
-
+  const [successModal, setSuccessModal] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
+  const [succesText, setSuccesText] = useState("");
   const wurl = "https://chair-ismatic-backend.onrender.com";
 
+  const closeModal = () => {
+    setSuccessModal(false);
+    window.location.reload()
+  };
+  
+  const closeErrorModal = () => {
+    setErrorModal(false);
+  };
   useEffect(() => {
     const fetchOrderById = async () => {
       try {
@@ -55,8 +66,12 @@ const EditOrderDetail = () => {
         order
       );
       console.log("Update response:", response.data);
+      setSuccessModal(true); // Update successModal state to true
+      setSuccesText('Order Updated Successfully');
       // Optionally, you can handle success or error messages here
     } catch (error) {
+      setErrorModal(true); // Update successModal state to true
+      setSuccesText('Error Updating Order');
       console.error("Error updating order:", error);
       // Optionally, you can handle error messages here
     }
@@ -243,6 +258,20 @@ const EditOrderDetail = () => {
       <Link to="/dashboard">
         <button className="updateDataBtn deleteBtn">Back To Dashboard</button>
       </Link>
+      {successModal && (
+        <Modal
+          modalText={succesText}
+          buttonText="Ok"
+          closeModal={closeModal}
+        />
+      )}
+       {errorModal && (
+        <Modal
+          modalText={succesText}
+          buttonText="Ok"
+          closeModal={closeErrorModal}
+        />
+      )}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 .user-chat-bar{
     width: 20%;
-    height: 90vh;
+    height: 80vh;
     border-right: 1px solid black;
 }
 
@@ -88,4 +88,8 @@
 .conversation.clicked .userChatName {
   
     color: #ed5a5a;
+  }
+  .user-chat-messages{
+    height: 75vh;
+    padding: 5px;
   }
