@@ -217,7 +217,7 @@ const VendorEditProduct = () => {
           </div>
           <div className="viewCart">
             <button className="proceedBtn" onClick={handlePostItem}>
-              Save Change, indes
+              Save Changes
             </button>
           </div>
         </div>
