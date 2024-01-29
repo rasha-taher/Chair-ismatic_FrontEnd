@@ -202,16 +202,17 @@ const VendorEditProduct = () => {
                 className="product-input"
                 onChange={handleImageUpload}
               />
-              <div className="sellItemImage">
-                {image.map((c, index) => (
-                  <img
-                    key={index}
-                    src={getImageSrc(c)}
-                    className="imagePreview"
-                    alt="Preview"
-                  />
-                )}
-              </div>
+             <div className="sellItemImage">
+  {image.map((c, index) => (
+    <img
+      key={index}
+      src={getImageSrc(c)}
+      className="imagePreview"
+      alt="Preview"
+    />
+  ))}
+</div>
+
             </div>
           </div>
           <div className="viewCart">
