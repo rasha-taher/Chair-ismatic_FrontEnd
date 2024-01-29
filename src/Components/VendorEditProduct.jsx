@@ -121,19 +121,14 @@ const VendorEditProduct = () => {
 
           <div className="sellItemDetails">
             <div className="productCategoryToSell">
-              <p className="descText">Choose A Category: </p> &nbsp;
-              <select
-                className="selectCategory"
+              <p className="descText"> Category Of Your Product: </p> &nbsp;
+               <input
+                type="text"
+                className="productInputsToSell"
                 value={selectedCategory}
-                onChange={handleCategoryChange}
-              >
-                <option> Categories</option>
-                {categories.map((category) => (
-                  <option key={category._id} value={category.category}>
-                    {category.category}
-                  </option>
-                ))}
-              </select>
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                disabled
+              />
             </div>
 
             <div className="productCategoryToSell">
@@ -205,7 +200,7 @@ const VendorEditProduct = () => {
               <div className="sellItemImage">
                 {imagePreview && (
                   <img
-                    src={imagePreview}
+                    src={image}
                     className="imagePreview"
                     alt="Preview"
                   />
