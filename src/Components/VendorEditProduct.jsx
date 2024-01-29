@@ -203,8 +203,9 @@ const VendorEditProduct = () => {
                 onChange={handleImageUpload}
               />
               <div className="sellItemImage">
-                {image.map((c, index) && (
+                {image.map((c, index) => (
                   <img
+                    key={index}
                     src={getImageSrc(c)}
                     className="imagePreview"
                     alt="Preview"
@@ -215,7 +216,7 @@ const VendorEditProduct = () => {
           </div>
           <div className="viewCart">
             <button className="proceedBtn" onClick={handlePostItem}>
-              Save Changes
+              Save Change, indes
             </button>
           </div>
         </div>
