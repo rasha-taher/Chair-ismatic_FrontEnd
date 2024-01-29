@@ -112,6 +112,11 @@ const VendorEditProduct = () => {
     updatedColors[index] = newColor;
     setColors(updatedColors);
   };
+  
+    const getImageSrc = (imageData) => {
+    const imageType = imageData.substring(5, imageData.indexOf(";"));
+    return `data:${imageType};base64,${imageData}`;
+  };
   return (
     <div>
       <MenuBar />
@@ -198,9 +203,9 @@ const VendorEditProduct = () => {
                 onChange={handleImageUpload}
               />
               <div className="sellItemImage">
-                {imagePreview && (
+                {image.map((c, index) && (
                   <img
-                    src={image}
+                    src={getImageSrc(c)}
                     className="imagePreview"
                     alt="Preview"
                   />
