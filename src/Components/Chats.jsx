@@ -80,35 +80,47 @@ const Chats = () => {
     getMessages();
   }, [currentChat]);
 
-  useEffect(() => {
-    const getOrCreateConversation = async () => {
+   useEffect(() => {
+    const fetchConversation = async () => {
       try {
-        if (clickedUser) {
-          const res = await axios.get(
-            wurl +
-              `/conversation/getConversationOfTwoUser/${user}/${clickedUser.email}`
-          );
-
-          if (res.data) {
-            setCurrentChat(res.data);
-          } else {
-            const newConversationRes = await axios.post(
-              wurl + "/conversation/newConversation",
-              {
-                members: [user, clickedUser.email],
-              }
-            );
-            setCurrentChat(newConversationRes.data);
-          }
+        if (!clickedUser) {
+          console.log("No user selected.");
+          return;
         }
-      } catch (err) {
-        console.log(err);
+  
+        const res = await axios.get(
+          `${wurl}/conversation/getConversationOfTwoUser/${user}/${clickedUser.email}`
+        );
+  
+        if (res.data) {
+          setCurrentChat(res.data);
+        } else {
+          console.log("No conversation found. Creating a new one...");
+          createConversation();
+        }
+      } catch (error) {
+        console.error("Error fetching conversation:", error);
       }
     };
-
-    getOrCreateConversation();
+  
+    const createConversation = async () => {
+      try {
+        const newConversationRes = await axios.post(
+          `${wurl}/conversation/newConversation`,
+          {
+            senderEmail: user,
+            receiverEmail: clickedUser.email,
+          }
+        );
+  
+        setCurrentChat(newConversationRes.data);
+      } catch (error) {
+        console.error("Error creating conversation:", error);
+      }
+    };
+  
+    fetchConversation();
   }, [user, clickedUser]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
