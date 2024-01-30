@@ -28,7 +28,7 @@ const Chats = () => {
 
   useEffect(() => {
     axios
-      .get(wurl + "/user/vendors")
+      .get(wurl + "/user/getAllUsers")
       .then((response) => setVendors(response.data))
       .catch((error) => console.error("Error fetching customer data:", error));
   }, []);
